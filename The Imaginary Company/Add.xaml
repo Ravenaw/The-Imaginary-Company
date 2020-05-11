@@ -7,8 +7,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Grid>
-
+        <Grid Margin="auto">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="TIC No."></TextBlock>
+                <TextBox></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="IAN No."></TextBlock>
+                <TextBox></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Name"></TextBlock>
+                <TextBox></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Weight"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Quantity"></TextBlock>
+            </StackPanel>
+            <Button Content="Add"></Button>
+        </Grid>
     </Grid>
 </Page>
