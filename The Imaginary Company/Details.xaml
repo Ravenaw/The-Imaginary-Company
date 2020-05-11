@@ -9,6 +9,44 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="50"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="241*" />
+                <ColumnDefinition Width="1359*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+                <RowDefinition Height="538.4"/>
+            </Grid.RowDefinitions>
 
+
+            <TextBlock HorizontalAlignment="Left" Margin="5,5,0,0" Text="Product" TextWrapping="Wrap" VerticalAlignment="Top" Height="100" Width="265" FontSize="60" Grid.Column="1" Grid.Row="1" />
+            <StackPanel VerticalAlignment="Center"  Margin="50,0,0,0" HorizontalAlignment="Left" Orientation="Vertical" Name="Contacts" Grid.Row="2" Grid.Column="2" Height="274" Width="180">
+
+                <StackPanel Height="auto" Width="auto">
+                    <TextBlock Text="Company:" FontSize="40" HorizontalAlignment="Right"/>
+                    <TextBlock Text="TIC:" FontSize="40" HorizontalAlignment="Right" />
+                    <TextBlock Text="Location:" FontSize="40" HorizontalAlignment="Right"/>
+                    <TextBlock Text="Weight:" FontSize="40"  HorizontalAlignment="Right"/>
+                    <TextBlock Text="Stock:" FontSize="40" HorizontalAlignment="Right"/>
+
+                </StackPanel>
+
+            </StackPanel>
+
+            <StackPanel Margin="0,50,0,0" Height="auto" Width="auto" Grid.Column="3" Grid.Row="2"  Spacing="5">
+                <TextBlock Height="50" Width="641" HorizontalAlignment="Left" Text="To be binded" FontSize="40"/>
+                <TextBlock Height="50" Width="641" HorizontalAlignment="Left" Text="To be binded" FontSize="40"/>
+                <TextBlock Height="50" Width="641" HorizontalAlignment="Left" Text="To be binded" FontSize="40"/>
+                <TextBlock Height="50" Width="641" HorizontalAlignment="Left" Text="To be binded" FontSize="40"/>
+                <TextBlock Height="50" Width="641" HorizontalAlignment="Left" Text="To be binded" FontSize="40"/>
+
+            </StackPanel>
+            <Button Grid.Column="3" Grid.Row="3" Background="Gray" Name="Delete" Height="54" Width="135" VerticalAlignment="Top" Content="Delete"/>
+        </Grid>
     </Grid>
 </Page>
