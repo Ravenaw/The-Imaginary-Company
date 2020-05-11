@@ -8,31 +8,42 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Spacing="5">
             <StackPanel Orientation="Horizontal">
                 <Grid>
                     <StackPanel Spacing="20">
-                        <TextBlock Text="TIC No." Height =" 40"></TextBlock>
-                        <TextBlock Text="IAN No." Height =" 40"></TextBlock>
-                        <TextBlock Text="Name"  Height =" 40"></TextBlock>
-                        <TextBlock Text="Weight"  Height =" 40"></TextBlock>
-                        <TextBlock Text="Quantity"  Height =" 40"></TextBlock>
-                        <TextBlock Text="Location"  Height =" 40"></TextBlock>
+                        <Grid Height ="25">
+                            <TextBlock Text="TIC No." VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="25">
+                            <TextBlock Text="IAN No." VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="25">
+                            <TextBlock Text="Name" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="25">
+                            <TextBlock Text="Weight" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="25">
+                            <TextBlock Text="Quantity" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="25">
+                            <TextBlock Text="Location" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
                     </StackPanel>
                 </Grid>
                 <Grid>
                     <StackPanel Width="200" Spacing="20">
-                        <TextBox Height ="40"></TextBox>
-                        <TextBox Height ="40"></TextBox>
-                        <TextBox Height ="40"></TextBox>
-                        <TextBox Height ="40"></TextBox>
-                        <TextBox Height ="40"></TextBox>
-                        <TextBox Height ="40"></TextBox>
+                        <TextBox Height ="25"></TextBox>
+                        <TextBox Height ="25"></TextBox>
+                        <TextBox Height ="25"></TextBox>
+                        <TextBox Height ="25"></TextBox>
+                        <TextBox Height ="25"></TextBox>
+                        <TextBox Height ="25"></TextBox>
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <Grid Height="20"></Grid>
-            <Button Content="Add"></Button>
+            <Button Content="Add" HorizontalAlignment="Right"></Button>
         </StackPanel>
     </Grid>
 </Page>
