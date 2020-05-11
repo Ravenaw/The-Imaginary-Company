@@ -7,31 +7,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal">
                 <Grid>
-                    <StackPanel>
-                        <TextBlock Text="TIC No." Height="25" Padding="10"></TextBlock>
-                        <TextBlock Text="IAN No." Height="25" Padding="10"></TextBlock>
-                        <TextBlock Text="Name" Height="25" Padding="10"></TextBlock>
-                        <TextBlock Text="Weight" Height="25" Padding="10"></TextBlock>
-                        <TextBlock Text="Quantity" Height="25" Padding="10"></TextBlock>
-                        <TextBlock Text="Location" Height="25" Padding="10"></TextBlock>
+                    <StackPanel Spacing="20">
+                        <TextBlock Text="TIC No." Height =" 40"></TextBlock>
+                        <TextBlock Text="IAN No." Height =" 40"></TextBlock>
+                        <TextBlock Text="Name"  Height =" 40"></TextBlock>
+                        <TextBlock Text="Weight"  Height =" 40"></TextBlock>
+                        <TextBlock Text="Quantity"  Height =" 40"></TextBlock>
+                        <TextBlock Text="Location"  Height =" 40"></TextBlock>
                     </StackPanel>
                 </Grid>
                 <Grid>
-                    <StackPanel Width="200">
-                        <TextBox Height="25" Padding="10"></TextBox>
-                        <TextBox Height="25" Padding="10"></TextBox>
-                        <TextBox Height="25" Padding="10"></TextBox>
-                        <TextBox Height="25" Padding="10"></TextBox>
-                        <TextBox Height="25" Padding="10"></TextBox>
-                        <TextBox Height="25" Padding="10"></TextBox>
-                        <Button Content="Add" HorizontalAlignment="Center" Padding="5" Width="50"></Button>
+                    <StackPanel Width="200" Spacing="20">
+                        <TextBox Height ="40"></TextBox>
+                        <TextBox Height ="40"></TextBox>
+                        <TextBox Height ="40"></TextBox>
+                        <TextBox Height ="40"></TextBox>
+                        <TextBox Height ="40"></TextBox>
+                        <TextBox Height ="40"></TextBox>
                     </StackPanel>
                 </Grid>
             </StackPanel>
-        </Grid>
+            <Grid Height="20"></Grid>
+            <Button Content="Add"></Button>
+        </StackPanel>
     </Grid>
 </Page>
