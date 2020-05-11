@@ -8,26 +8,26 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
-        <Grid Margin="auto">
-            <StackPanel Orientation="Horizontal">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBlock Text="TIC No."></TextBlock>
                 <TextBox></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBlock Text="IAN No."></TextBlock>
                 <TextBox></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBlock Text="Name"></TextBlock>
                 <TextBox></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBlock Text="Weight"></TextBlock>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBlock Text="Quantity"></TextBlock>
             </StackPanel>
-            <Button Content="Add"></Button>
+            <Button Content="Add" HorizontalAlignment="Center"></Button>
         </Grid>
     </Grid>
 </Page>
