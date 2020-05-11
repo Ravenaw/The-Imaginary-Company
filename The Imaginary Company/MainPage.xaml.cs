@@ -26,5 +26,10 @@ namespace The_Imaginary_Company
         {
             this.InitializeComponent();
         }
+
+        private void Login_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Burger), e);
+        }
     }
 }
