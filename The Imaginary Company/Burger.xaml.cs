@@ -38,7 +38,7 @@ namespace The_Imaginary_Company
         }
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            Content.Navigate(typeof(MainPage), e);
+            Content.Navigate(typeof(Add), e);
 
         }
         private void History_Click(object sender, RoutedEventArgs e)
