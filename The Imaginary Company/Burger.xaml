@@ -8,7 +8,152 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch" ></Setter>
+            <Setter Property="Height" Value="50" ></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Background" Value="Transparent" ></Setter>
+            <Setter Property="Padding" Value="0"></Setter>
+           
+            <Setter Property="Margin" Value="0"></Setter>
+        </Style>
+    </Page.Resources>
 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="181*"/>
+            <RowDefinition Height="19*"/>
+        </Grid.RowDefinitions>
+        <SplitView x:Name="SideMenu" IsPaneOpen="False" DisplayMode="CompactInline" OpenPaneLength="200" CompactPaneLength="50"  Grid.RowSpan="2">
+
+            <SplitView.Pane>
+                <Grid Width="200"  HorizontalAlignment="Left">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="155" Height="6*"></RowDefinition>
+                        <RowDefinition MinHeight="25"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid  Grid.Row="0" VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Button Grid.Row="0" Click="Pane_Click" Style="{StaticResource ButtonStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <SymbolIcon Symbol ="GlobalNavigationButton" Grid.Column="0"></SymbolIcon>
+                                <TextBlock Grid.Column="1" Text="" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>
+
+                        <Button Grid.Row="1" Click="Home_Click" Style="{StaticResource ButtonStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <FontIcon Grid.Column="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE80F;"></FontIcon>
+                                <TextBlock Grid.Column="1" Text="Home" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>
+
+
+                        <Button Grid.Row="2" Click="Menu_Click" Style="{StaticResource ButtonStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <FontIcon Grid.Column="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE736;"></FontIcon>
+                                <TextBlock Grid.Column="1" Text="Menu" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>
+
+
+                        <Button Grid.Row="4" Click="History_Click"  Style="{StaticResource ButtonStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <FontIcon Grid.Column="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF738;"></FontIcon>
+                                <TextBlock Grid.Column="1" Text="Recent Orders" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>
+
+
+                        <Button Grid.Row="3" Click="Cart_Click" Style="{StaticResource ButtonStyle}" x:Name="CartI">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <FontIcon Grid.Column="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7BF;"></FontIcon>
+                                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding CartNumber}" Padding="3" FontSize="12"></TextBlock>
+                                <TextBlock Grid.Column="1" Text="Shopping Cart" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>
+
+
+                        <!--<Button Grid.Row="5" Click="Delete_Click" Style="{StaticResource ButtonStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <SymbolIcon Symbol ="Delete" Grid.Column="0"></SymbolIcon>
+                                <TextBlock Grid.Column="1" Text="Delete" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>-->
+
+
+                        <!--<Button Grid.Row="6" Click="Find_Click" Style="{StaticResource ButtonStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <SymbolIcon Symbol ="Find" Grid.Column="0"></SymbolIcon>
+                                <TextBlock Grid.Column="1" Text="Find" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>-->
+                    </Grid>
+                    <Grid MaxHeight="50" Grid.Row="1" VerticalAlignment="Bottom">
+                        <Button Click="ContactUs_Click" Style="{StaticResource ButtonStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="50"></ColumnDefinition>
+                                    <ColumnDefinition Width="150"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <SymbolIcon Symbol ="Account" Grid.Column="0"></SymbolIcon>
+                                <TextBlock Grid.Column="1" Text="Contact Us" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                </TextBlock>
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Frame x:Name="Content" Navigated="Content_Navigated" ></Frame>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>
+

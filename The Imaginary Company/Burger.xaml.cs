@@ -26,5 +26,60 @@ namespace The_Imaginary_Company
         {
             this.InitializeComponent();
         }
+        private void Pane_Click(object sender, RoutedEventArgs e)
+        {
+            SideMenu.IsPaneOpen = !SideMenu.IsPaneOpen;
+
+        }
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Navigate(typeof(MainPage), e);
+
+        }
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Navigate(typeof(MainPage), e);
+
+        }
+        private void History_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Navigate(typeof(MainPage), e);
+
+        }
+        private void Cart_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Navigate(typeof(MainPage), e);
+
+        }
+
+        private void ContactUs_Click(object sender, RoutedEventArgs e)
+        {
+            Content.Navigate(typeof(MainPage), e);
+        }
+
+        private void Content_Navigated(object sender, NavigationEventArgs e)
+        {
+            Page destinationPage = e.Content as Page;
+            if (destinationPage.GetType() == typeof(MainPage))
+            {
+
+                // Change property of destination page
+                //(destinationPage as ProductPage).viewModel = viewModel;
+            }
+
+            if (destinationPage.GetType() == typeof(MainPage))
+            {
+
+                // Change property of destination page
+                //(destinationPage as ShoppingCartPage).viewModel = viewModel;
+            }
+
+            if (destinationPage.GetType() == typeof(MainPage))
+            {
+
+                // Change property of destination page
+                //(destinationPage as OrderHistory).viewModel = viewModel;
+            }
+        }
     }
 }
