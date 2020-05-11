@@ -12,34 +12,34 @@
             <StackPanel Orientation="Horizontal">
                 <Grid>
                     <StackPanel Spacing="20">
-                        <Grid Height ="25">
+                        <Grid Height ="35">
                             <TextBlock Text="TIC No." VerticalAlignment="Center"></TextBlock>
                         </Grid>
-                        <Grid Height ="25">
+                        <Grid Height ="35">
                             <TextBlock Text="IAN No." VerticalAlignment="Center"></TextBlock>
                         </Grid>
-                        <Grid Height ="25">
+                        <Grid Height ="35">
                             <TextBlock Text="Name" VerticalAlignment="Center"></TextBlock>
                         </Grid>
-                        <Grid Height ="25">
+                        <Grid Height ="35">
                             <TextBlock Text="Weight" VerticalAlignment="Center"></TextBlock>
                         </Grid>
-                        <Grid Height ="25">
+                        <Grid Height ="35">
                             <TextBlock Text="Quantity" VerticalAlignment="Center"></TextBlock>
                         </Grid>
-                        <Grid Height ="25">
+                        <Grid Height ="35">
                             <TextBlock Text="Location" VerticalAlignment="Center"></TextBlock>
                         </Grid>
                     </StackPanel>
                 </Grid>
                 <Grid>
                     <StackPanel Width="200" Spacing="20">
-                        <TextBox Height ="25"></TextBox>
-                        <TextBox Height ="25"></TextBox>
-                        <TextBox Height ="25"></TextBox>
-                        <TextBox Height ="25"></TextBox>
-                        <TextBox Height ="25"></TextBox>
-                        <TextBox Height ="25"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
                     </StackPanel>
                 </Grid>
             </StackPanel>
