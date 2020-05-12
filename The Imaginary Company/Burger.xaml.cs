@@ -36,19 +36,19 @@ namespace The_Imaginary_Company
             Content.Navigate(typeof(MainPage), e);
 
         }
-        private void Menu_Click(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
             Content.Navigate(typeof(Add), e);
 
         }
-        private void History_Click(object sender, RoutedEventArgs e)
+        private void Search_Click(object sender, RoutedEventArgs e)
         {
-            Content.Navigate(typeof(Details), e);
+            Content.Navigate(typeof(Search), e);
 
         }
-        private void Cart_Click(object sender, RoutedEventArgs e)
+        private void Details_Click(object sender, RoutedEventArgs e)
         {
-            Content.Navigate(typeof(MainPage), e);
+            Content.Navigate(typeof(Details), e);
 
         }
 
