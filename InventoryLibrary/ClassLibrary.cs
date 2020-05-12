@@ -1,11 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace InventoryLibrary
 {
     public class Article
     {
+        public Article(int tic, int ian, string owner, int quantity, int weight, string location)
+        {
+            TIC = tic;
+            IAN = ian;
+            Owner = owner;
+            Quantity = quantity;
+            Weight = weight;
+            Location = location;
+        }
         public int TIC { get; set; }
         public int IAN { get; set; }
         public string Owner { get; set; }
@@ -19,6 +30,37 @@ namespace InventoryLibrary
         }
 
     }
+
+    public class ArticleCatalog
+    {
+        private ObservableCollection<Article> List = new ObservableCollection<Article>();
+        
+        public ArticleCatalog()
+        {
+            //grab from server
+        }
+
+        public ObservableCollection<Article> GetAll()
+        {
+            return List;
+        }
+
+        public void AddToList(Article NewArt)
+        {
+            List.Add(NewArt);
+        }
+
+        public void RemoveFromList(Article Art)
+        {
+            List.Remove(Art);
+        }
+
+        public Article FindByTIC(int tic)
+        {
+            return List.First(x => x.TIC == tic);
+        }
+    }
+    
 
     public class User
     {

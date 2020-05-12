@@ -2,11 +2,13 @@
 using Microsoft.Toolkit.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using The_Imaginary_Company.View;
 
 namespace The_Imaginary_Company
 {
@@ -29,6 +31,7 @@ namespace The_Imaginary_Company
         }
 
         private User CurrentUser = new User();
+        private ArticleCatalog justcatalog = new ArticleCatalog();
         public void VMSetUser(string u,string p)
         {
             CurrentUser.SetUser(u,p);
