@@ -7,7 +7,8 @@ namespace AzureWebService.DBAccess
 {
     public class DBAccess
     {
-        public const string connectionString = @"Data Source=the-imaginary-company.database.windows.net;Initial Catalog=Inventory;User ID=ticAdmin;Password=********;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public const string connectionString = @"Server=tcp:the-imaginary-company.database.windows.net,1433;Initial Catalog=Inventory;Persist Security Info=False;User ID=ticAdmin;Password=ticPassword1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
 
     }
 }
