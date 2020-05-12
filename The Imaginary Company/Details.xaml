@@ -38,7 +38,7 @@
 
             </StackPanel>
 
-            <StackPanel Margin="0,50,0,0" Height="auto" Width="auto" Grid.Column="3" Grid.Row="2"  Spacing="5">
+            <StackPanel Margin="0,52,0,0" Height="auto" Width="auto" Grid.Column="3" Grid.Row="2"  Spacing="5">
                 <TextBlock Height="50" Width="641" HorizontalAlignment="Left" Text="To be binded" FontSize="40"/>
                 <TextBlock Height="50" Width="641" HorizontalAlignment="Left" Text="To be binded" FontSize="40"/>
                 <TextBlock Height="50" Width="641" HorizontalAlignment="Left" Text="To be binded" FontSize="40"/>
