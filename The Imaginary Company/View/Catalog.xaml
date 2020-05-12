@@ -10,16 +10,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <controls:DataGrid x:Name="dataGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <controls:DataGrid.Columns>
-                <controls:DataGridTextColumn Header="TIC No."></controls:DataGridTextColumn>
-                <controls:DataGridTextColumn Header="IAN No."></controls:DataGridTextColumn>
-                <controls:DataGridTextColumn Header="Name"></controls:DataGridTextColumn>
-                <controls:DataGridTextColumn Header="Location"></controls:DataGridTextColumn>
-                <controls:DataGridTextColumn Header="Quantity"></controls:DataGridTextColumn>
-                <controls:DataGridTextColumn Header="Weight"></controls:DataGridTextColumn>
-                <controls:DataGridTextColumn Header="Owner"></controls:DataGridTextColumn>
-            </controls:DataGrid.Columns>
-        </controls:DataGrid>
+        <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center">
+            <controls:DataGrid x:Name="dataGrid">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn Header="TIC No."></controls:DataGridTextColumn>
+                    <controls:DataGridTextColumn Header="IAN No."></controls:DataGridTextColumn>
+                    <controls:DataGridTextColumn Header="Name"></controls:DataGridTextColumn>
+                    <controls:DataGridTextColumn Header="Location"></controls:DataGridTextColumn>
+                    <controls:DataGridTextColumn Header="Quantity"></controls:DataGridTextColumn>
+                    <controls:DataGridTextColumn Header="Weight"></controls:DataGridTextColumn>
+                    <controls:DataGridTextColumn Header="Owner"></controls:DataGridTextColumn>
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </ScrollViewer>
     </Grid>
 </Page>
