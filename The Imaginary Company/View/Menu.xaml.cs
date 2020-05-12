@@ -20,9 +20,9 @@ namespace The_Imaginary_Company
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Burger : Page
+    public sealed partial class Menu : Page
     {
-        public Burger()
+        public Menu()
         {
             this.InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace The_Imaginary_Company
         }
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            Content.Navigate(typeof(MainPage), e);
+            Content.Navigate(typeof(Login), e);
 
         }
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -54,27 +54,27 @@ namespace The_Imaginary_Company
 
         private void ContactUs_Click(object sender, RoutedEventArgs e)
         {
-            Content.Navigate(typeof(MainPage), e);
+            Content.Navigate(typeof(Login), e);
         }
 
         private void Content_Navigated(object sender, NavigationEventArgs e)
         {
             Page destinationPage = e.Content as Page;
-            if (destinationPage.GetType() == typeof(MainPage))
+            if (destinationPage.GetType() == typeof(Login))
             {
 
                 // Change property of destination page
                 //(destinationPage as ProductPage).viewModel = viewModel;
             }
 
-            if (destinationPage.GetType() == typeof(MainPage))
+            if (destinationPage.GetType() == typeof(Login))
             {
 
                 // Change property of destination page
                 //(destinationPage as ShoppingCartPage).viewModel = viewModel;
             }
 
-            if (destinationPage.GetType() == typeof(MainPage))
+            if (destinationPage.GetType() == typeof(Login))
             {
 
                 // Change property of destination page
