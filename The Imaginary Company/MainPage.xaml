@@ -9,10 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Spacing="20" VerticalAlignment="Center">
-            <TextBox x:Name="textBox1" HorizontalAlignment="Center"  Text="Username" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBox x:Name="textBox" HorizontalAlignment="Center"  Text="Password" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <Button x:Name="button" Content="Log In" HorizontalAlignment="Center" Click="Login_Click"/>
+        <StackPanel Spacing="20" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Viewbox Height="50">
+                <SymbolIcon Symbol="Contact"></SymbolIcon>
+            </Viewbox>
+            <TextBox x:Name="username" HorizontalAlignment="Center" PlaceholderText="Username" Width="200"/>
+            <TextBox x:Name="password" HorizontalAlignment="Center" PlaceholderText="Password" Width="200"/>
+            <Button x:Name="login" Content="Log In" HorizontalAlignment="Center" Click="Login_Click" Width="100"/>
         </StackPanel>
     </Grid>
 </Page>
