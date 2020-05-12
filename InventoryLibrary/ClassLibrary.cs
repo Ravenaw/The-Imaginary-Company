@@ -20,15 +20,19 @@ namespace InventoryLibrary
 
     }
 
-    public class Somethingelse
+    public class User
     {
-        public int TIC { get; set; }
-        public int IAN { get; set; }
-        public string Owner { get; set; }
-        public int Quantity { get; set; }
-        public int Weight { get; set; }
-        public string Location { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        
+        public bool ValidUser()
+        {
+            if (Username == "ticAdmin" && Password == "ticPassword1")
+                return true;
+            else
+                return false;
 
+        }
         public override string ToString()
         {
             return "";
