@@ -9,6 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Text="Search" FontSize="72" Padding="0,100,0,0"></TextBlock>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid Padding="0,0,5,0">
                 <StackPanel Spacing="20">
