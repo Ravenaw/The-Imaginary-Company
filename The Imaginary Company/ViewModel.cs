@@ -8,6 +8,9 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Windows.Graphics.Imaging;
+using Exe2009.Common;
 using The_Imaginary_Company.View;
 
 namespace The_Imaginary_Company
@@ -16,6 +19,7 @@ namespace The_Imaginary_Company
     {
         public ViewModel()
         {
+            AddArticleCommand=new RelayCommand(AddArticle);
         }
 
         public static ViewModel Instance { get { return Nested.instance; } }
@@ -31,16 +35,30 @@ namespace The_Imaginary_Company
         }
 
         private User CurrentUser = new User();
-        private ArticleCatalog justcatalog = new ArticleCatalog();
+        private ArticleCatalog justcatalog;
+        public ICommand AddArticleCommand { get; set; }
+        public int TIC { get; set; }
+        public int IAN { get; set; }
+        public string Name { get; set; }
+        public int Weight { get; set; }
+        public int Quantity { get; set; }
+        public string Location { get; set; }
+        public string Owner { get; set; }
         public void VMSetUser(string u,string p)
         {
             CurrentUser.SetUser(u,p);
+        }
+
+        public void AddArticle()
+        {
+            justcatalog.AddToList(new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name));
         }
 
         public bool VMCheckPassword()
         {
             return CurrentUser.ValidUser();
         }
+        public ObservableCollection<Article> ArticleCollection => justcatalog.Articles;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

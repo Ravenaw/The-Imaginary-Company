@@ -8,7 +8,7 @@ namespace InventoryLibrary
 {
     public class Article
     {
-        public Article(int tic, int ian, string owner, int quantity, int weight, string location)
+        public Article(int tic, int ian, string owner, int quantity, int weight, string location, string name)
         {
             TIC = tic;
             IAN = ian;
@@ -16,9 +16,11 @@ namespace InventoryLibrary
             Quantity = quantity;
             Weight = weight;
             Location = location;
+            Name = name;
         }
         public int TIC { get; set; }
         public int IAN { get; set; }
+        public string Name { get; set; }
         public string Owner { get; set; }
         public int Quantity { get; set; }
         public int Weight { get; set; }
@@ -33,7 +35,7 @@ namespace InventoryLibrary
 
     public class ArticleCatalog
     {
-        private ObservableCollection<Article> List = new ObservableCollection<Article>();
+        private  static ObservableCollection<Article> List = new ObservableCollection<Article>();
         
         public ArticleCatalog()
         {
@@ -59,6 +61,8 @@ namespace InventoryLibrary
         {
             return List.First(x => x.TIC == tic);
         }
+
+        public ObservableCollection<Article> Articles => List;
     }
     
 
