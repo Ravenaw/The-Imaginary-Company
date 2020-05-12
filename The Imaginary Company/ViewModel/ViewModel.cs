@@ -12,28 +12,25 @@ namespace The_Imaginary_Company.ViewModel
     public class ViewModel : INotifyPropertyChanged
     {
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-
-        private static readonly ViewModel instance = new ViewModel();
-
-        // Explicit static constructor to tell C# compilernot to mark type as beforefieldinit
-        static ViewModel()
-        {
-        }
-
         private ViewModel()
         {
         }
 
-        public static ViewModel Instance
+        public static ViewModel Instance { get { return Nested.instance; } }
+
+        private class Nested
         {
-            get
+            // Explicit static constructor to tell C# compiler
+            // not to mark type as beforefieldinit
+            static Nested()
             {
-                return instance;
             }
+
+            internal static readonly ViewModel instance = new ViewModel();
         }
 
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
