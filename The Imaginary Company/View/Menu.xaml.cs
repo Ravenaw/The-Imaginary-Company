@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using The_Imaginary_Company.View;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,7 +34,7 @@ namespace The_Imaginary_Company
         }
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            Content.Navigate(typeof(Login), e);
+            Content.Navigate(typeof(Catalog), e);
 
         }
         private void Add_Click(object sender, RoutedEventArgs e)
