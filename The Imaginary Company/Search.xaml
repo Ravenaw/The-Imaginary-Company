@@ -5,10 +5,102 @@
     xmlns:local="using:The_Imaginary_Company"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
+    mc:Ignorable="d" 
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch" ></Setter>
+            <Setter Property="Height" Value="50" ></Setter>
+            <Setter Property="BorderThickness" Value="0"></Setter>
+            <Setter Property="Background" Value="Transparent" ></Setter>
+            <Setter Property="Padding" Value="0"></Setter>
+            <Setter Property="Margin" Value="0"></Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid>
+        <StackPanel>
+            <CommandBar OverflowButtonVisibility="Collapsed" Grid.ColumnSpan="2" Height="40" >
+                <AppBarButton Icon="Remove">
+                </AppBarButton>
+                <AppBarButton Icon="Pictures">
+                </AppBarButton>
+                <AppBarButton Icon="Cancel">
+                </AppBarButton>
+            </CommandBar>
+        </StackPanel>
+        <StackPanel Margin="0,0,1022,960">
+            <TextBlock Text="TIC Search" Height="40" FontSize="22" HorizontalAlignment="Center" Margin="0,0,1,0" Width="440">
+
+            </TextBlock>
+        </StackPanel>
+        <StackPanel Margin="865,132,0,823" HorizontalAlignment="Left" Width="531">
+            <TextBox Text="" TextWrapping="Wrap" Height="43" Width="532"/>
+
+        </StackPanel>
+        <StackPanel Margin="864,216,104,0" Height="46" VerticalAlignment="Top">
+            <TextBox Height="44"></TextBox>
+        </StackPanel>
+        <StackPanel Margin="658,133,634,822" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <StackPanel.RenderTransform>
+                <CompositeTransform SkewX="1.206" TranslateX="-0.979"/>
+
+            </StackPanel.RenderTransform>
+            <TextBlock Text="Article Nr" TextWrapping="Wrap" HorizontalAlignment="Center" FontSize="20" Height="43" Width="202"/>
+
+        </StackPanel>
+        <StackPanel Margin="664,216,641,738">
+            <TextBlock Text="Location" Height="46" FontSize="20">
+
+            </TextBlock>
+
+        </StackPanel>
+        <StackPanel Margin="1130,304,105,650">
+            <Button Content="Search" Height="48" Width="268"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,40,0,340" HorizontalAlignment="Left" Width="70">
+            <Button Height="60" Width="71">
+                <Grid>
+                    <SymbolIcon Symbol="GlobalNavigationButton" Margin="-33,-28,-33,-29"></SymbolIcon>
+                </Grid>
+            </Button>
+            <Button Height="56" Width="70">
+                <Grid Margin="-34,-30,-35,-28" RenderTransformOrigin="0.483,0.5" >
+                    <Grid.RenderTransform>
+                        <CompositeTransform ScaleY="-1" TranslateY="0"/>
+                    </Grid.RenderTransform>
+                    <SymbolIcon Symbol="Clock"></SymbolIcon>
+                </Grid>
+            </Button>
+            <Button Height="56" Width="71">
+                <Grid Margin="-35,-27,-37,-29">
+                    <SymbolIcon Symbol="Edit"></SymbolIcon>
+                    </Grid>
+            </Button>
+            <Button Height="60" Width="71">
+                <Grid Margin="-35,-30,-36,-30">
+                    <SymbolIcon Symbol="Delete"></SymbolIcon>
+                </Grid>
+            </Button>
+            <Button Height="58" Width="73">
+                <Grid Margin="-37,-29,-27,-29">
+                    <SymbolIcon Symbol="People"></SymbolIcon>
+                </Grid>
+            </Button>
+            <Button Height="62" Width="71">
+                <Grid Margin="-35,-30,-35,-33">
+                    <SymbolIcon Symbol="Camera"></SymbolIcon>
+                </Grid>
+
+            </Button>
+
+
+        </StackPanel>
+
 
     </Grid>
+
+
 </Page>
