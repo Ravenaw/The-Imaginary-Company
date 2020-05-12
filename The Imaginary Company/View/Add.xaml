@@ -8,41 +8,43 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Grid>
-        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Text="Add Item" FontSize="72" Padding="0,100,0,0"></TextBlock>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid Padding="0,0,5,0">
-                <StackPanel Spacing="20">
-                    <Grid Height ="35">
-                        <TextBlock Text="TIC No." VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                    <Grid Height ="35">
-                        <TextBlock Text="IAN No." VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                    <Grid Height ="35">
-                        <TextBlock Text="Name" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                    <Grid Height ="35">
-                        <TextBlock Text="Weight" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                    <Grid Height ="35">
-                        <TextBlock Text="Quantity" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                    <Grid Height ="35">
-                        <TextBlock Text="Location" VerticalAlignment="Center"></TextBlock>
-                    </Grid>
-                </StackPanel>
-            </Grid>
-            <Grid>
-                <StackPanel Width="200" Spacing="20">
-                    <TextBox Height ="35"></TextBox>
-                    <TextBox Height ="35"></TextBox>
-                    <TextBox Height ="35"></TextBox>
-                    <TextBox Height ="35"></TextBox>
-                    <TextBox Height ="35"></TextBox>
-                    <TextBox Height ="35"></TextBox>
-                    <Button Content="Add" HorizontalAlignment="Right" Width="50"></Button>
-                </StackPanel>
-            </Grid>
+        <StackPanel Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Text="Add Item" FontSize="72"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Grid Padding="0,0,5,0">
+                    <StackPanel Spacing="20">
+                        <Grid Height ="35">
+                            <TextBlock Text="TIC No." VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="IAN No." VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="Name" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="Weight" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="Quantity" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="Location" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <StackPanel Width="200" Spacing="20">
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <TextBox Height ="35"></TextBox>
+                        <Button Content="Add" HorizontalAlignment="Right" Width="50"></Button>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
