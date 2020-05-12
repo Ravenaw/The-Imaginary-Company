@@ -34,7 +34,7 @@ namespace The_Imaginary_Company
             string u = username.Text;
             string p = password.Password;
             ViewModel.Instance.VMSetUser(u, p);
-            if(ViewModel.Instance.VMCheckPassword())
+            //if(ViewModel.Instance.VMCheckPassword())
             this.Frame.Navigate(typeof(Menu), e);
         }
     }

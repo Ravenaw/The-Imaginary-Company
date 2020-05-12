@@ -35,7 +35,7 @@ namespace The_Imaginary_Company
         }
 
         private User CurrentUser = new User();
-        private ArticleCatalog justcatalog;
+        private ArticleCatalog justcatalog = new ArticleCatalog();
         public ICommand AddArticleCommand { get; set; }
         public int TIC { get; set; }
         public int IAN { get; set; }
