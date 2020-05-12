@@ -8,21 +8,29 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="1079">
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,305,0,0">
-            <StackPanel Orientation="Horizontal" Margin="50" HorizontalAlignment="Center" >
-                <StackPanel Spacing="20" Width="200">
-                    <TextBlock Text="Article Nr" FontSize="20" HorizontalAlignment="Center"></TextBlock>
-                    <TextBlock Text="Location" Height="37" FontSize="20" HorizontalAlignment="Center"/>
-                    <TextBlock Text="IEM" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Padding="0,0,5,0">
+                <StackPanel Spacing="20">
+                    <Grid Height="35">
+                        <TextBlock Text="Article No." VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Height="35">
+                        <TextBlock Text="Location" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Height="35">
+                        <TextBlock Text="IAN" VerticalAlignment="Center"></TextBlock>
+                    </Grid>
                 </StackPanel>
-                <StackPanel Spacing="20" HorizontalAlignment="Center" Width="300" >
-                    <TextBox></TextBox>
-                    <TextBox></TextBox>
-                    <TextBox></TextBox>
+            </Grid>
+            <Grid>
+                <StackPanel Spacing="20" HorizontalAlignment="Center" Width="200" >
+                    <TextBox Height="35"></TextBox>
+                    <TextBox Height="35"></TextBox>
+                    <TextBox Height="35"></TextBox>
+                    <Button Width="100" Content="Search" HorizontalAlignment="Right"></Button>
                 </StackPanel>
-            </StackPanel>
-            <Button Height="34" Width="300" Content="Search" HorizontalAlignment="Center" Margin="200,0,0,0"></Button>
+            </Grid>
         </StackPanel>
     </Grid>
 
