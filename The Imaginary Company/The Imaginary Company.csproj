@@ -116,6 +116,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Compile Include="View\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>
     </Compile>
@@ -197,6 +198,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryLibrary\InventoryLibrary.csproj">
+      <Project>{c53c792a-7a01-47e8-aa1d-6b7eb7f7bc7b}</Project>
+      <Name>InventoryLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "The Imaginary Company", "Th
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureWebService", "AzureWebService\AzureWebService.csproj", "{4EF35224-9743-46D8-8841-CA9A39801629}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryLibrary", "InventoryLibrary\InventoryLibrary.csproj", "{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,26 @@ Global
 		{4EF35224-9743-46D8-8841-CA9A39801629}.Release|x64.Build.0 = Release|Any CPU
 		{4EF35224-9743-46D8-8841-CA9A39801629}.Release|x86.ActiveCfg = Release|Any CPU
 		{4EF35224-9743-46D8-8841-CA9A39801629}.Release|x86.Build.0 = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|x64.Build.0 = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Debug|x86.Build.0 = Debug|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|ARM.Build.0 = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|ARM64.Build.0 = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|x64.ActiveCfg = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|x64.Build.0 = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|x86.ActiveCfg = Release|Any CPU
+		{C53C792A-7A01-47E8-AA1D-6B7EB7F7BC7B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
