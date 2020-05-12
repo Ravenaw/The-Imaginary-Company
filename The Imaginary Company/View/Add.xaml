@@ -20,6 +20,9 @@
                             <TextBlock Text="IAN No." VerticalAlignment="Center"></TextBlock>
                         </Grid>
                         <Grid Height ="35">
+                            <TextBlock Text="Owner" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
                             <TextBlock Text="Name" VerticalAlignment="Center"></TextBlock>
                         </Grid>
                         <Grid Height ="35">
@@ -35,6 +38,7 @@
                 </Grid>
                 <Grid>
                     <StackPanel Width="200" Spacing="20">
+                        <TextBox Height ="35"></TextBox>
                         <TextBox Height ="35"></TextBox>
                         <TextBox Height ="35"></TextBox>
                         <TextBox Height ="35"></TextBox>
