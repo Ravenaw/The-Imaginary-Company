@@ -43,7 +43,7 @@ namespace The_Imaginary_Company
         }
         private void History_Click(object sender, RoutedEventArgs e)
         {
-            Content.Navigate(typeof(MainPage), e);
+            Content.Navigate(typeof(Details), e);
 
         }
         private void Cart_Click(object sender, RoutedEventArgs e)
