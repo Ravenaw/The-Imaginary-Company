@@ -14,7 +14,7 @@
                 <SymbolIcon Symbol="Contact"></SymbolIcon>
             </Viewbox>
             <TextBox x:Name="username" HorizontalAlignment="Center" PlaceholderText="Username" Width="200"/>
-            <TextBox x:Name="password" HorizontalAlignment="Center" PlaceholderText="Password" Width="200"/>
+            <PasswordBox x:Name="password" HorizontalAlignment="Center" PlaceholderText="Password" Width="200"/>
             <Button x:Name="login" Content="Log In" HorizontalAlignment="Center" Click="Login_Click" Width="100"/>
         </StackPanel>
     </Grid>
