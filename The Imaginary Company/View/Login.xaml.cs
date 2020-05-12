@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace The_Imaginary_Company
@@ -22,6 +23,7 @@ namespace The_Imaginary_Company
     /// </summary>
     public sealed partial class Login : Page
     {
+        
         public Login()
         {
             this.InitializeComponent();
@@ -29,6 +31,10 @@ namespace The_Imaginary_Company
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            string u = username.Text;
+            string p = password.Text;
+            ViewModel.Instance.VMSetUser(u, p);
+            if(ViewModel.Instance.VMCheckPassword())
             this.Frame.Navigate(typeof(Menu), e);
         }
     }

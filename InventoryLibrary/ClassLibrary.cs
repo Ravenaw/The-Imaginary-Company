@@ -22,9 +22,14 @@ namespace InventoryLibrary
 
     public class User
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        private string Username { get; set; }
+        private string Password { get; set; }
         
+        public void SetUser(string user,string pass)
+        {
+            Username = user;
+            Password = pass;
+        }
         public bool ValidUser()
         {
             if (Username == "ticAdmin" && Password == "ticPassword1")
@@ -35,7 +40,7 @@ namespace InventoryLibrary
         }
         public override string ToString()
         {
-            return "";
+            return "You are not allowed to view this";
         }
 
     }

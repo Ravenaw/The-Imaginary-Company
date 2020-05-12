@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Helpers;
+﻿using InventoryLibrary;
+using Microsoft.Toolkit.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,12 +8,11 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace The_Imaginary_Company.ViewModel
+namespace The_Imaginary_Company
 {
     public class ViewModel : INotifyPropertyChanged
     {
-
-        private ViewModel()
+        public ViewModel()
         {
         }
 
@@ -20,8 +20,7 @@ namespace The_Imaginary_Company.ViewModel
 
         private class Nested
         {
-            // Explicit static constructor to tell C# compiler
-            // not to mark type as beforefieldinit
+            // Explicit static constructor to tell C# compiler not to mark type as beforefieldinit
             static Nested()
             {
             }
@@ -29,6 +28,16 @@ namespace The_Imaginary_Company.ViewModel
             internal static readonly ViewModel instance = new ViewModel();
         }
 
+        private User CurrentUser = new User();
+        public void VMSetUser(string u,string p)
+        {
+            CurrentUser.SetUser(u,p);
+        }
+
+        public bool VMCheckPassword()
+        {
+            return CurrentUser.ValidUser();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

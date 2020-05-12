@@ -116,7 +116,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="ViewModel.cs" />
     <Compile Include="View\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>
     </Compile>
