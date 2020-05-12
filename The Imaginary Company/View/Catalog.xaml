@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Center">
+        <ScrollViewer HorizontalAlignment="Center" VerticalAlignment="Top" Padding="0,100,0,0">
             <controls:DataGrid x:Name="dataGrid">
                 <controls:DataGrid.Columns>
                     <controls:DataGridTextColumn Header="TIC No."></controls:DataGridTextColumn>
