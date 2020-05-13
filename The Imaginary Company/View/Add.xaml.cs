@@ -22,9 +22,11 @@ namespace The_Imaginary_Company
     /// </summary>
     public sealed partial class Add : Page
     {
+        
         public Add()
         {
             this.InitializeComponent();
+            this.DataContext = ViewModel.Instance;
         }
     }
 }
