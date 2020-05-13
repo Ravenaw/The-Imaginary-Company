@@ -20,6 +20,7 @@ namespace The_Imaginary_Company
         public ViewModel()
         {
             AddArticleCommand=new RelayCommand(AddArticle);
+            SearchArticleCommand= new RelayCommand(Search);
         }
 
         public static ViewModel Instance { get { return Nested.instance; } }
@@ -36,7 +37,9 @@ namespace The_Imaginary_Company
 
         private User CurrentUser = new User();
         private ArticleCatalog justcatalog = new ArticleCatalog();
+        public ICommand SearchArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
+        public Article SearchResult { get; set; }
         public int TIC { get; set; }
         public int IAN { get; set; }
         public string Name { get; set; }
@@ -54,15 +57,13 @@ namespace The_Imaginary_Company
             justcatalog.AddToList(new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name));
         }
 
-        public Article Search()
+        public void Search()
         {
             if (TIC != 0)
-                return justcatalog.FindByTIC(TIC);
+                SearchResult= justcatalog.FindByTIC(TIC);
             else
             {
-                if (IAN != 0)
-                    return justcatalog.FindByIAN(IAN);
-                else return justcatalog.FindByLocation(Location);
+                SearchResult = IAN != 0 ? justcatalog.FindByIAN(IAN) : justcatalog.FindByLocation(Location);
             }
         }
 

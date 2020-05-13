@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.DataContext>
+        <local:ViewModel/>
+    </Page.DataContext>
     <Grid>
         <Grid >
             <Grid.ColumnDefinitions>
@@ -24,7 +26,7 @@
             </Grid.RowDefinitions>
 
 
-            <TextBlock HorizontalAlignment="Left" Margin="5,5,0,0" Text="Product" TextWrapping="Wrap" VerticalAlignment="Top"  FontSize="40" Grid.Column="1" Grid.Row="1" />
+            <TextBlock HorizontalAlignment="Left" Margin="5,5,0,0" Text="{Binding SearchResult.Name, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top"  FontSize="40" Grid.Column="1" Grid.Row="1" />
             <StackPanel VerticalAlignment="Center"  Margin="50,0,0,0" HorizontalAlignment="Left" Orientation="Vertical" Name="Contacts" Grid.Row="2" Grid.Column="2">
 
                 <StackPanel Height="auto" Width="auto">
@@ -39,11 +41,11 @@
             </StackPanel>
 
             <StackPanel Height="auto" Width="auto" Grid.Column="3" Grid.Row="2" Margin="20,0,0,0" >
-                <TextBlock HorizontalAlignment="Left" Text="To be binded" FontSize="25"/>
-                <TextBlock HorizontalAlignment="Left" Text="To be binded" FontSize="25"/>
-                <TextBlock HorizontalAlignment="Left" Text="To be binded" FontSize="25"/>
-                <TextBlock HorizontalAlignment="Left" Text="To be binded" FontSize="25"/>
-                <TextBlock HorizontalAlignment="Left" Text="To be binded" FontSize="25"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding SearchResult.Owner, Mode=TwoWay}" FontSize="25"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding SearchResult.TIC, Mode=TwoWay}" FontSize="25"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding SearchResult.Location, Mode=TwoWay}" FontSize="25"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding SearchResult.Weight, Mode=TwoWay}" FontSize="25"/>
+                <TextBlock HorizontalAlignment="Left" Text="{Binding SearchResult.Quantity, Mode=TwoWay}" FontSize="25"/>
 
             </StackPanel>
             <Button Grid.Column="3"  Grid.Row="3" Background="Gray" Name="Delete" Height="30" Width="60" VerticalAlignment="Top" Content="Delete" Margin="25"/>

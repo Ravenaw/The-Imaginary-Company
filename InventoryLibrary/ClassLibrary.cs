@@ -39,7 +39,10 @@ namespace InventoryLibrary
 
     public class ArticleCatalog
     {
-        private static ObservableCollection<Article> List = new ObservableCollection<Article>();
+        private static ObservableCollection<Article> List = new ObservableCollection<Article>()
+        {
+            new Article(2001,5641,"Dolce Gusto", 5, 10, "Row 3", "Capsules")
+        };
 
         public ArticleCatalog()
         {

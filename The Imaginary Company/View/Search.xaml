@@ -7,7 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+<Page.DataContext>
+    <local:ViewModel/>
+</Page.DataContext>
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
             <TextBlock HorizontalAlignment="Center" Text="Search" FontSize="72"></TextBlock>
@@ -27,10 +29,10 @@
                 </Grid>
                 <Grid>
                     <StackPanel Spacing="20" HorizontalAlignment="Center" Width="200" >
-                        <TextBox Height="35"></TextBox>
-                        <TextBox Height="35"></TextBox>
-                        <TextBox Height="35"></TextBox>
-                        <Button Width="100" Content="Search" HorizontalAlignment="Right"></Button>
+                        <TextBox Height="35" Text="{Binding TIC, Mode=TwoWay}"></TextBox>
+                        <TextBox Height="35" Text="{Binding Location, Mode=TwoWay}"></TextBox>
+                        <TextBox Height="35" Text="{Binding IAN, Mode=TwoWay}"></TextBox>
+                        <Button Command="{Binding SearchArticleCommand}" Width="100" Content="Search" HorizontalAlignment="Right" Click="Button_Click"></Button>
                     </StackPanel>
                 </Grid>
             </StackPanel>
