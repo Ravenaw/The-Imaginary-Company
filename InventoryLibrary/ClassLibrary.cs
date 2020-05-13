@@ -8,6 +8,10 @@ namespace InventoryLibrary
 {
     public class Article
     {
+        public Article()
+        {
+
+        }
         public Article(int tic, int ian, string owner, int quantity, int weight, string location, string name)
         {
             TIC = tic;
@@ -35,8 +39,8 @@ namespace InventoryLibrary
 
     public class ArticleCatalog
     {
-        private  static ObservableCollection<Article> List = new ObservableCollection<Article>();
-        
+        private static ObservableCollection<Article> List = new ObservableCollection<Article>();
+
         public ArticleCatalog()
         {
             //grab from server
@@ -72,14 +76,14 @@ namespace InventoryLibrary
 
         public ObservableCollection<Article> Articles => List;
     }
-    
+
 
     public class User
     {
         private string Username { get; set; }
         private string Password { get; set; }
-        
-        public void SetUser(string user,string pass)
+
+        public void SetUser(string user, string pass)
         {
             Username = user;
             Password = pass;
