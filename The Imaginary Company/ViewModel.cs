@@ -54,6 +54,18 @@ namespace The_Imaginary_Company
             justcatalog.AddToList(new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name));
         }
 
+        public Article Search()
+        {
+            if (TIC != 0)
+                return justcatalog.FindByTIC(TIC);
+            else
+            {
+                if (IAN != 0)
+                    return justcatalog.FindByIAN(IAN);
+                else return justcatalog.FindByLocation(Location);
+            }
+        }
+
         public bool VMCheckPassword()
         {
             return CurrentUser.ValidUser();

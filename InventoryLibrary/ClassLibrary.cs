@@ -61,6 +61,14 @@ namespace InventoryLibrary
         {
             return List.First(x => x.TIC == tic);
         }
+        public Article FindByIAN(int ian)
+        {
+            return List.First(x => x.IAN == ian);
+        }
+        public Article FindByLocation(string location)
+        {
+            return List.First(x => x.Location == location);
+        }
 
         public ObservableCollection<Article> Articles => List;
     }
