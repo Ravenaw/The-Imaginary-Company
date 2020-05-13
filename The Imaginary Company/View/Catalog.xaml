@@ -13,15 +13,15 @@
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Spacing="20">
             <TextBlock Text="Catalog" FontSize="72" HorizontalAlignment="Center"></TextBlock>
             <ScrollViewer>
-                <controls:DataGrid x:Name="dataGrid">
+                <controls:DataGrid x:Name="dataGrid" DataContext="The_Imaginary_Company.ViewModel" ItemsSource="{Binding Source=justcatalog}">
                     <controls:DataGrid.Columns>
-                        <controls:DataGridTextColumn Header="TIC No."></controls:DataGridTextColumn>
-                        <controls:DataGridTextColumn Header="IAN No."></controls:DataGridTextColumn>
-                        <controls:DataGridTextColumn Header="Name"></controls:DataGridTextColumn>
-                        <controls:DataGridTextColumn Header="Location"></controls:DataGridTextColumn>
-                        <controls:DataGridTextColumn Header="Quantity"></controls:DataGridTextColumn>
-                        <controls:DataGridTextColumn Header="Weight"></controls:DataGridTextColumn>
-                        <controls:DataGridTextColumn Header="Owner"></controls:DataGridTextColumn>
+                        <controls:DataGridTextColumn Header="TIC No." Binding="{Binding TIC}"></controls:DataGridTextColumn>
+                        <controls:DataGridTextColumn Header="IAN No." Binding="{Binding IAN}"></controls:DataGridTextColumn>
+                        <controls:DataGridTextColumn Header="Name" Binding="{Binding Name}"></controls:DataGridTextColumn>
+                        <controls:DataGridTextColumn Header="Location" Binding="{Binding Location}"></controls:DataGridTextColumn>
+                        <controls:DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"></controls:DataGridTextColumn>
+                        <controls:DataGridTextColumn Header="Weight" Binding="{Binding Weight}"></controls:DataGridTextColumn>
+                        <controls:DataGridTextColumn Header="Owner" Binding="{Binding Owner}"></controls:DataGridTextColumn>
                     </controls:DataGrid.Columns>
                 </controls:DataGrid>
             </ScrollViewer>
