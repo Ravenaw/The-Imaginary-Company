@@ -12,6 +12,8 @@ using System.Windows.Input;
 using Windows.Graphics.Imaging;
 using Exe2009.Common;
 using The_Imaginary_Company.View;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace The_Imaginary_Company
 {
@@ -65,6 +67,9 @@ namespace The_Imaginary_Company
             {
                 SearchResult = IAN != 0 ? justcatalog.FindByIAN(IAN) : justcatalog.FindByLocation(Location);
             }
+
+            var Page = (Frame)Window.Current.Content;
+            (Page.Content as Menu).GoToPage(typeof(Details));
 
             OnPropertyChanged("SearchResult");
         }

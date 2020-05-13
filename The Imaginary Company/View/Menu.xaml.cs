@@ -27,6 +27,11 @@ namespace The_Imaginary_Company
         {
             this.InitializeComponent();
         }
+
+        public void GoToPage(Type page)
+        {
+            Content.Navigate(page);
+        }
         private void Pane_Click(object sender, RoutedEventArgs e)
         {
             SideMenu.IsPaneOpen = !SideMenu.IsPaneOpen;
