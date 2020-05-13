@@ -39,7 +39,7 @@ namespace The_Imaginary_Company
         private ArticleCatalog justcatalog = new ArticleCatalog();
         public ICommand SearchArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
-        public Article SearchResult { get; set; }
+        public Article SearchResult = new Article(1111,1111,"default",1,1,"here","yes");
         public int TIC { get; set; }
         public int IAN { get; set; }
         public string Name { get; set; }
@@ -65,6 +65,8 @@ namespace The_Imaginary_Company
             {
                 SearchResult = IAN != 0 ? justcatalog.FindByIAN(IAN) : justcatalog.FindByLocation(Location);
             }
+
+            OnPropertyChanged("SearchResult");
         }
 
         public bool VMCheckPassword()

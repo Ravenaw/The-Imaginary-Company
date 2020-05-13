@@ -25,10 +25,12 @@ namespace The_Imaginary_Company
         public Search()
         {
             this.InitializeComponent();
+            this.DataContext = ViewModel.Instance;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //this gets executed before the search function updates the variables
             this.Frame.Navigate(typeof(Details), e);
         }
     }

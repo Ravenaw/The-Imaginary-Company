@@ -25,6 +25,7 @@ namespace The_Imaginary_Company
         public Details()
         {
             this.InitializeComponent();
+            this.DataContext = ViewModel.Instance.SearchResult;
         }
     }
 }
