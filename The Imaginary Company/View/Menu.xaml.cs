@@ -40,22 +40,18 @@ namespace The_Imaginary_Company
         private void Home_Click(object sender, RoutedEventArgs e)
         {
             Content.Navigate(typeof(Catalog), e);
-
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             Content.Navigate(typeof(Add), e);
-
         }
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             Content.Navigate(typeof(Search), e);
-
         }
         private void Details_Click(object sender, RoutedEventArgs e)
         {
             Content.Navigate(typeof(Details), e);
-
         }
 
         private void ContactUs_Click(object sender, RoutedEventArgs e)
