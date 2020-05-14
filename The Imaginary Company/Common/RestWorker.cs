@@ -18,7 +18,7 @@ namespace The_Imaginary_Company.Common
         public async Task<ObservableCollection<Article>> GetArticlesAsync()
         {
 
-            string url = localhost + "/api/Hotel";
+            string url = localhost + "/api/Articles";
             using (HttpClient client = new HttpClient())
             {
                 string response = await client.GetStringAsync(url);

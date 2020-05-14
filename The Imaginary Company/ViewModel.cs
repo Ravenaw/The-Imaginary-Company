@@ -24,6 +24,7 @@ namespace The_Imaginary_Company
         {
             AddArticleCommand=new RelayCommand(AddArticle);
             SearchArticleCommand= new RelayCommand(Search);
+            ObservableCollection<Article> aa = Worker.GetArticlesAsync().Result;
         }
 
         public static ViewModel Instance { get { return Nested.instance; } }
@@ -41,7 +42,7 @@ namespace The_Imaginary_Company
         private User CurrentUser = new User();
         private ArticleCatalog justcatalog = new ArticleCatalog();
         private RestWorker Worker = new RestWorker();
-        public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
+        public ObservableCollection<Article> AllArticles { get; set; }
 
         public ICommand SearchArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
