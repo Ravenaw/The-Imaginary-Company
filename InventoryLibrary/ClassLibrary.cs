@@ -54,6 +54,11 @@ namespace InventoryLibrary
             return List;
         }
 
+        public void Update(ObservableCollection<Article> NewL)
+        {
+            List = NewL;
+        }
+
         public void AddToList(Article NewArt)
         {
             List.Add(NewArt);

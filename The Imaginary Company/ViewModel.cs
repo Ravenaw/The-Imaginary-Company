@@ -24,7 +24,8 @@ namespace The_Imaginary_Company
         {
             AddArticleCommand=new RelayCommand(AddArticle);
             SearchArticleCommand= new RelayCommand(Search);
-           // ObservableCollection<Article> aa = Worker.GetArticlesAsync().Result;
+            UpdateDb();
+           
         }
 
         public static ViewModel Instance { get { return Nested.instance; } }
@@ -38,7 +39,7 @@ namespace The_Imaginary_Company
 
             internal static readonly ViewModel instance = new ViewModel();
         }
-
+        
         private User CurrentUser = new User();
         private ArticleCatalog justcatalog = new ArticleCatalog();
         private RestWorker Worker = new RestWorker();
@@ -57,6 +58,11 @@ namespace The_Imaginary_Company
         public int Quantity { get; set; }
         public string Location { get; set; }
         public string Owner { get; set; }
+        private void UpdateDb()
+        {
+            ObservableCollection<Article> aa = Worker.GetArticlesAsync();
+            justcatalog.Update(aa);
+        }
         public void VMSetUser(string u,string p)
         {
             CurrentUser.SetUser(u,p);

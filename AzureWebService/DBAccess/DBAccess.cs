@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using InventoryLibrary;
+using System.Collections.ObjectModel;
 
 namespace AzureWebService.DBAccess
 {
@@ -11,10 +12,10 @@ namespace AzureWebService.DBAccess
     {
         public const string connectionString = @"Server=tcp:the-imaginary-company.database.windows.net,1433;Initial Catalog=Inventory;Persist Security Info=False;User ID=ticAdmin;Password=ticPassword1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-        public List<Article> GetAllArticles()
+        public ObservableCollection<Article> GetAllArticles()
         {
             string query = "select * from articles";
-            List<Article> mylist = new List<Article>();
+            ObservableCollection<Article> mylist = new ObservableCollection<Article>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();

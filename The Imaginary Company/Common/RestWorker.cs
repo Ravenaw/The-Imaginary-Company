@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 
 namespace The_Imaginary_Company.Common
 {
@@ -14,19 +15,19 @@ namespace The_Imaginary_Company.Common
     {
         string localhost = "http://localhost:57352";
        
-        /////////////////////
-        public async Task<ObservableCollection<Article>> GetArticlesAsync()
+        public ObservableCollection<Article> GetArticlesAsync()
         {
 
             string url = localhost + "/api/Articles";
             using (HttpClient client = new HttpClient())
             {
-                string response = await client.GetStringAsync(url);
+                string response = client.GetStringAsync(url).Result;
                 ObservableCollection<Article> List = JsonConvert.DeserializeObject<ObservableCollection<Article>>(response);
                 return List;
             }
         }
 
+       
         //public async Task<Hotel> GetHotel(int id)
         //{
 
@@ -95,8 +96,5 @@ namespace The_Imaginary_Company.Common
         //        }
         //    }
         //}
-
-
-
     }
 }
