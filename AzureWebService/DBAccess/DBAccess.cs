@@ -22,7 +22,16 @@ namespace AzureWebService.DBAccess
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    //things here...
+                    Article theArticle = new Article();
+                    theArticle.TIC = reader.GetInt32(0);
+                    theArticle.IAN = reader.GetInt32(1);
+                    theArticle.Owner = reader.GetString(2);
+                    theArticle.Name = reader.GetString(3);
+                    theArticle.Quantity = reader.GetInt32(4);
+                    theArticle.Weight = reader.GetInt32(5);
+                    theArticle.Location = reader.GetString(6);
+
+                    mylist.Add(theArticle);
                 }
                 return mylist;
             }
