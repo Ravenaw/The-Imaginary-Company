@@ -81,7 +81,12 @@ namespace The_Imaginary_Company
             var Page = (Frame)Window.Current.Content;
             (Page.Content as Menu).GoToPage(NewPage);
         }
-
+        //just for details page
+        public string quantity
+        {
+            get { return Quantity.ToString("F1"); }
+        }
+        //.........
         public bool VMCheckPassword()
         {
             return CurrentUser.ValidUser();
