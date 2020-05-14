@@ -58,6 +58,8 @@ namespace The_Imaginary_Company
         public void AddArticle()
         {
             justcatalog.AddToList(new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name));
+            SearchResult = justcatalog.FindByTIC(TIC);
+            Navigate(typeof(Details));
         }
 
         public void Search()
@@ -69,10 +71,15 @@ namespace The_Imaginary_Company
                 SearchResult = IAN != 0 ? justcatalog.FindByIAN(IAN) : justcatalog.FindByLocation(Location);
             }
 
-            var Page = (Frame)Window.Current.Content;
-            (Page.Content as Menu).GoToPage(typeof(Details));
+            Navigate(typeof(Details));
 
             OnPropertyChanged("SearchResult");
+        }
+
+        public void Navigate(Type NewPage)
+        {
+            var Page = (Frame)Window.Current.Content;
+            (Page.Content as Menu).GoToPage(NewPage);
         }
 
         public bool VMCheckPassword()
