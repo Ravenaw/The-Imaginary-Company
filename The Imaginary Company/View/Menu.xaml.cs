@@ -64,21 +64,18 @@ namespace The_Imaginary_Company
             Page destinationPage = e.Content as Page;
             if (destinationPage.GetType() == typeof(Login))
             {
-
                 // Change property of destination page
                 //(destinationPage as ProductPage).viewModel = viewModel;
             }
 
             if (destinationPage.GetType() == typeof(Login))
             {
-
                 // Change property of destination page
                 //(destinationPage as ShoppingCartPage).viewModel = viewModel;
             }
 
             if (destinationPage.GetType() == typeof(Login))
             {
-
                 // Change property of destination page
                 //(destinationPage as OrderHistory).viewModel = viewModel;
             }
