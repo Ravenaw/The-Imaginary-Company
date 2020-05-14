@@ -91,6 +91,28 @@ namespace InventoryLibrary
         private string Username { get; set; }
         private string Password { get; set; }
 
+        public User(string username, string password)
+        {
+            Username = username;
+            Password = password;
+        }
+
+        public User()
+        {
+        }
+
+        public string userName { get; set; }
+        public string password { get; set; }
+
+        public static List<User> UsersList = new List<User>()
+        {
+            new User("Aukse", "124Bla"),
+            new User("Marcell", "124Pla"),
+            new User("Vlad", "124Gla"),
+            new User("David","124Blu"),
+            new User("Andrea", "124Dbu")
+        };
+
         public void SetUser(string user, string pass)
         {
             Username = user;
@@ -98,7 +120,7 @@ namespace InventoryLibrary
         }
         public bool ValidUser()
         {
-            if (Username == "ticAdmin" && Password == "ticPassword1")
+          if (Username == "ticAdmin" && Password == "ticPassword1" || Username == "Aukse" && Password == "124Bla" || Username == "Marcell" && Password == "124Pla" || Username == "Vlad" && Password == "124Gla" || Username == "David" && Password == "124Blu" || Username == "Andrea" && Password == "124Dbu")
                 return true;
             else
                 return false;
