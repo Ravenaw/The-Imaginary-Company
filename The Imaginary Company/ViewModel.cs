@@ -39,6 +39,7 @@ namespace The_Imaginary_Company
 
         private User CurrentUser = new User();
         private ArticleCatalog justcatalog = new ArticleCatalog();
+        public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
         public ICommand SearchArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
         public Article SearchResult = new Article(1111,1111,"default",1,1,"here","yes");

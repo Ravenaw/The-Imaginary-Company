@@ -25,6 +25,7 @@ namespace The_Imaginary_Company.View
         public Catalog()
         {
             this.InitializeComponent();
+            dataGrid.ItemsSource = ViewModel.Instance.AllArticles;
         }
     }
 }
