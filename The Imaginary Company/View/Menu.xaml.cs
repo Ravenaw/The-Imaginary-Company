@@ -35,27 +35,22 @@ namespace The_Imaginary_Company
         private void Pane_Click(object sender, RoutedEventArgs e)
         {
             SideMenu.IsPaneOpen = !SideMenu.IsPaneOpen;
-
         }
         private void Home_Click(object sender, RoutedEventArgs e)
         {
             Content.Navigate(typeof(Catalog), e);
-
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             Content.Navigate(typeof(Add), e);
-
         }
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             Content.Navigate(typeof(Search), e);
-
         }
         private void Details_Click(object sender, RoutedEventArgs e)
         {
             Content.Navigate(typeof(Details), e);
-
         }
 
         private void ContactUs_Click(object sender, RoutedEventArgs e)
@@ -68,21 +63,18 @@ namespace The_Imaginary_Company
             Page destinationPage = e.Content as Page;
             if (destinationPage.GetType() == typeof(Login))
             {
-
                 // Change property of destination page
                 //(destinationPage as ProductPage).viewModel = viewModel;
             }
 
             if (destinationPage.GetType() == typeof(Login))
             {
-
                 // Change property of destination page
                 //(destinationPage as ShoppingCartPage).viewModel = viewModel;
             }
 
             if (destinationPage.GetType() == typeof(Login))
             {
-
                 // Change property of destination page
                 //(destinationPage as OrderHistory).viewModel = viewModel;
             }
