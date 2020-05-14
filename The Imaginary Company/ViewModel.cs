@@ -39,10 +39,9 @@ namespace The_Imaginary_Company
 
             internal static readonly ViewModel instance = new ViewModel();
         }
-        
+        private RestWorker Worker = new RestWorker();
         private User CurrentUser = new User();
         private ArticleCatalog justcatalog = new ArticleCatalog();
-        private RestWorker Worker = new RestWorker();
         public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
 
         public ICommand SearchArticleCommand { get; set; }
@@ -60,8 +59,8 @@ namespace The_Imaginary_Company
         public string Owner { get; set; }
         private void UpdateDb()
         {
-            ObservableCollection<Article> aa = Worker.GetArticlesAsync();
-            justcatalog.Update(aa);
+            ObservableCollection<Article> temp = Worker.GetArticlesAsync();
+            justcatalog.Update(temp);
         }
         public void VMSetUser(string u,string p)
         {
