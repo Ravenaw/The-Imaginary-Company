@@ -27,7 +27,7 @@ namespace InventoryLibrary
         public string Name { get; set; }
         public string Owner { get; set; }
         public int Quantity { get; set; }
-        public int Weight { get; set; }
+        public double Weight { get; set; }
         public string Location { get; set; }
 
         public override string ToString()
