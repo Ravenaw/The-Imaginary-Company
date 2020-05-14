@@ -13,7 +13,7 @@ namespace The_Imaginary_Company.Common
 {
     class RestWorker
     {
-        string localhost = "http://ticweb.azurewebsites.net";
+        string localhost = "https://ticweb.azurewebsites.net";
        
         public ObservableCollection<Article> GetArticlesAsync()
         {
