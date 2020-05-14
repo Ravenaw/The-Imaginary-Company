@@ -117,6 +117,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Common\RestWorker.cs" />
     <Compile Include="ViewModel.cs" />
     <Compile Include="View\Add.xaml.cs">
       <DependentUpon>Add.xaml</DependentUpon>

@@ -14,6 +14,7 @@ using Exe2009.Common;
 using The_Imaginary_Company.View;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using The_Imaginary_Company.Common;
 
 namespace The_Imaginary_Company
 {
@@ -39,10 +40,15 @@ namespace The_Imaginary_Company
 
         private User CurrentUser = new User();
         private ArticleCatalog justcatalog = new ArticleCatalog();
+        private RestWorker Worker = new RestWorker();
         public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
+
         public ICommand SearchArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
         public Article SearchResult = new Article(1111,1111,"default",1,1,"here","yes");
+
+
+
         public int TIC { get; set; }
         public int IAN { get; set; }
         public string Name { get; set; }
