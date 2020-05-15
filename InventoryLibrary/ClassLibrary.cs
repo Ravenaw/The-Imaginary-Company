@@ -108,9 +108,10 @@ namespace InventoryLibrary
         {
             new User("Aukse", "124Bla"),
             new User("Marcell", "124Pla"),
-            new User("Vlad", "124Gla"),
+            new User("Alex", "yes"),
             new User("David","124Blu"),
-            new User("Andrea", "124Dbu")
+            new User("Andrea", "124Dbu"),
+            new User("ticAdmin","ticPassword1")
         };
 
         public void SetUser(string user, string pass)
@@ -120,8 +121,10 @@ namespace InventoryLibrary
         }
         public bool ValidUser()
         {
-          if (Username == "ticAdmin" && Password == "ticPassword1" || Username == "Aukse" && Password == "124Bla" || Username == "Marcell" && Password == "124Pla" || Username == "Vlad" && Password == "124Gla" || Username == "David" && Password == "124Blu" || Username == "Andrea" && Password == "124Dbu")
-                return true;
+            User y = new User(Username, Password);
+            if (UsersList.First(x => x.Username == y.Username && x.Password == y.Password) != null)
+            { return true; }
+
             else
                 return false;
 
