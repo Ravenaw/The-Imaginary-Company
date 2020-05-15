@@ -93,7 +93,9 @@ namespace The_Imaginary_Company
         {
             justcatalog.RemoveFromList(SearchResult);
             SearchResult.Name = "deleted";
-            OnPropertyChanged("SearchResult");
+            OnPropertyChanged("Name");
+            //workaround
+            Navigate(typeof(Details));
         }
 
         public void Navigate(Type NewPage)
