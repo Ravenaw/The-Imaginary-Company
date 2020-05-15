@@ -48,7 +48,7 @@ namespace The_Imaginary_Company
         public ICommand SearchArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
-        public Article SearchResult = new Article(1111,1111,"default",1,1,"here","yes");
+        public Article SearchResult = new Article();
 
 
 
@@ -92,7 +92,8 @@ namespace The_Imaginary_Company
         public void Delete()
         {
             justcatalog.RemoveFromList(SearchResult);
-            SearchResult = new Article();
+            SearchResult.Name = "deleted";
+            OnPropertyChanged("SearchResult");
         }
 
         public void Navigate(Type NewPage)
