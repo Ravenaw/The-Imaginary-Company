@@ -101,9 +101,6 @@ namespace InventoryLibrary
         {
         }
 
-        public string userName { get; set; }
-        public string password { get; set; }
-
         public static List<User> UsersList = new List<User>()
         {
             new User("Aukse", "124Bla"),
