@@ -24,6 +24,7 @@ namespace The_Imaginary_Company
         {
             AddArticleCommand=new RelayCommand(AddArticle);
             SearchArticleCommand= new RelayCommand(Search);
+            DeleteCommand = new RelayCommand(Delete);
             UpdateDb();
            
         }
@@ -46,6 +47,7 @@ namespace The_Imaginary_Company
 
         public ICommand SearchArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
         public Article SearchResult = new Article(1111,1111,"default",1,1,"here","yes");
 
 
@@ -85,6 +87,12 @@ namespace The_Imaginary_Company
 
             Navigate(typeof(Details));
             OnPropertyChanged("SearchResult");
+        }
+
+        public void Delete()
+        {
+            justcatalog.RemoveFromList(SearchResult);
+            SearchResult = new Article();
         }
 
         public void Navigate(Type NewPage)

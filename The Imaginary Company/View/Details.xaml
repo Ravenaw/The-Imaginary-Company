@@ -49,7 +49,7 @@
 
             </StackPanel>
             <Button Grid.Column="3"  Grid.Row="3" Background="Gray" Name="Add" Height="30" Width="60" VerticalAlignment="Top" Content="Edit" Margin="25"/>
-            <Button Grid.Column="3"  Grid.Row="3" Background="Gray" Name="Delete" Height="30" Width="60" VerticalAlignment="Top" Content="Delete" Margin="105,25,0,0"/>
+            <Button x:Name="Delete" Command="{Binding DeleteCommand}" Grid.Column="3"  Grid.Row="3" Background="Gray" Height="30" Width="60" VerticalAlignment="Top" Content="Delete" Margin="105,25,0,0"/>
         </Grid>
     </Grid>
 </Page>
