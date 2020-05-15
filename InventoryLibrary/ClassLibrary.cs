@@ -121,8 +121,7 @@ namespace InventoryLibrary
         }
         public bool ValidUser()
         {
-            User y = new User(Username, Password);
-            if (UsersList.First(x => x.Username == y.Username && x.Password == y.Password) != null)
+            if (UsersList.First(x => x.Username == this.Username && x.Password == this.Password) != null)
             { return true; }
 
             else
