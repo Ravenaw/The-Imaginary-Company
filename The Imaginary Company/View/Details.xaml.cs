@@ -27,8 +27,8 @@ namespace The_Imaginary_Company
         {
             this.InitializeComponent();
             this.DataContext = ViewModel.Instance.SearchResult;
-            Delete.DataContext = ViewModel.Instance;
-            Edit.DataContext = ViewModel.Instance;
+            Buttons.DataContext = ViewModel.Instance;
+            
         }
 
         

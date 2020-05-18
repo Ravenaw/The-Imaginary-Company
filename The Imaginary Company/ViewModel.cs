@@ -53,6 +53,7 @@ namespace The_Imaginary_Company
         public ICommand DeleteCommand { get; set; }
         public ICommand DeleteForEditCommand { get; set; }
         public Article SearchResult = new Article();
+        public Article Temp = new Article();
 
 
 
@@ -104,11 +105,12 @@ namespace The_Imaginary_Company
 
         public void DeleteForEdit()
         {
-            justcatalog.RemoveFromList(SearchResult);
+            Temp = SearchResult;
             Navigate(typeof(EditItem));
         }
         public void Edit()
         {
+            justcatalog.RemoveFromList(Temp);
             justcatalog.AddToList(SearchResult);
             Navigate(typeof(Details));
         }
