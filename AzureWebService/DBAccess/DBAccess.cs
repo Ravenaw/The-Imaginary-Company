@@ -38,7 +38,7 @@ namespace AzureWebService.DBAccess
             }
         }
 
-        public Article GetArticle(int id)
+        public Article GetArticleByTIC(int id)
         {
             string query = "select * from Articles where TIC=@id";
             Article returnArticle = new Article();
@@ -47,7 +47,6 @@ namespace AzureWebService.DBAccess
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@id", id);
-                //parameters here...
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -63,6 +62,53 @@ namespace AzureWebService.DBAccess
             }
         }
 
+        public Article GetArticleByIAN(int id)
+        {
+            string query = "select * from Articles where IAN=@id";
+            Article returnArticle = new Article();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnArticle.TIC = reader.GetInt32(0);
+                    returnArticle.IAN = reader.GetInt32(1);
+                    returnArticle.Owner = reader.GetString(2);
+                    returnArticle.Name = reader.GetString(3);
+                    returnArticle.Quantity = reader.GetInt32(4);
+                    returnArticle.Weight = reader.GetInt32(5);
+                    returnArticle.Location = reader.GetString(6);
+                }
+                return returnArticle;
+            }
+        }
+
+        public Article GetArticleByLocation(string id)
+        {
+            string query = "select * from Articles where TIC like @id";
+            Article returnArticle = new Article();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    returnArticle.TIC = reader.GetInt32(0);
+                    returnArticle.IAN = reader.GetInt32(1);
+                    returnArticle.Owner = reader.GetString(2);
+                    returnArticle.Name = reader.GetString(3);
+                    returnArticle.Quantity = reader.GetInt32(4);
+                    returnArticle.Weight = reader.GetInt32(5);
+                    returnArticle.Location = reader.GetString(6);
+                }
+                return returnArticle;
+            }
+        }
         public void createArticle(Article article)
         {
             string query = "insert into Articles(TIC, IAN, Name, Owner, Location, Weight, Quantity) values(@tic, @ian, @name, @owner, @location, @weight, @quantity)"; //query here...
@@ -72,13 +118,12 @@ namespace AzureWebService.DBAccess
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@tic", article.TIC);
-                command.Parameters.AddWithValue("@ian",article.IAN);
+                command.Parameters.AddWithValue("@ian", article.IAN);
                 command.Parameters.AddWithValue("@name", article.Name);
                 command.Parameters.AddWithValue("@owner", article.Owner);
                 command.Parameters.AddWithValue("@location", article.Location);
                 command.Parameters.AddWithValue("@weight", article.Weight);
                 command.Parameters.AddWithValue("@quantity", article.Quantity);
-
                 //parameters here...
                 int affectedRows = command.ExecuteNonQuery();
             }
@@ -86,7 +131,7 @@ namespace AzureWebService.DBAccess
 
         public void deleteArticle(int id)
         {
-            string query = ""; //query here...
+            string query = "delete form Articles where TIC=@id"; //query here...
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -98,12 +143,19 @@ namespace AzureWebService.DBAccess
 
         public void updateArticle(int id, Article article)
         {
-            string query = ""; //query here...
+            string query = "update Articles set TIC=@tic, IAN=@ian, Name=@name, Owner=@owner, Location=@location, Weight=@weight, Quantity=@quantity where TIC=@id"; //query here...
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
-                //things here...
+                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@tic", article.TIC);
+                command.Parameters.AddWithValue("@ian", article.IAN);
+                command.Parameters.AddWithValue("@name", article.Name);
+                command.Parameters.AddWithValue("@owner", article.Owner);
+                command.Parameters.AddWithValue("@location", article.Location);
+                command.Parameters.AddWithValue("@weight", article.Weight);
+                command.Parameters.AddWithValue("@quantity", article.Quantity);
                 int affectedRows = command.ExecuteNonQuery();
             }
         }
