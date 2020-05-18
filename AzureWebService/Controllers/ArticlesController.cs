@@ -21,7 +21,7 @@ namespace AzureWebService.Controllers
         // GET: api/Articles/5
         public Article Get(int id)
         {
-            return articleAccess.GetArticle(id);
+            return articleAccess.GetArticleByTIC(id);
         }
 
         // POST: api/Articles
