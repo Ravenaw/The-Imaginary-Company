@@ -24,6 +24,20 @@ namespace AzureWebService.Controllers
             return articleAccess.GetArticleByTIC(id);
         }
 
+        [HttpGet]
+        [Route("api/Articles/byIAN/{ian}")]
+        public Article GetByIAN(int ian)
+        {
+            return articleAccess.GetArticleByIAN(ian);
+        }
+
+        [HttpGet]
+        [Route("api/Articles/byLoc/{loc}")]
+        public Article GetByLocation(string loc)
+        {
+            return articleAccess.GetArticleByLocation(loc);
+        }
+
         // POST: api/Articles
         public void Post([FromBody] Article article)
         {

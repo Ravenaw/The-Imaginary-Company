@@ -86,15 +86,15 @@ namespace AzureWebService.DBAccess
             }
         }
 
-        public Article GetArticleByLocation(string id)
+        public Article GetArticleByLocation(string loc)
         {
-            string query = "select * from Articles where TIC like @id";
+            string query = "select * from Articles where Location=@loc";
             Article returnArticle = new Article();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 SqlCommand command = new SqlCommand(query, conn);
-                command.Parameters.AddWithValue("@id", id);
+                command.Parameters.AddWithValue("@loc", loc);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
