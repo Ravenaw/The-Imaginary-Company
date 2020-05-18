@@ -15,13 +15,13 @@ namespace The_Imaginary_Company.Common
     {
         string localhost = "https://ticweb.azurewebsites.net";
        
-        public ObservableCollection<Article> GetArticlesAsync()
+        public async Task<ObservableCollection<Article>> GetArticlesAsync()
         {
 
             string url = localhost + "/api/Articles";
             using (HttpClient client = new HttpClient())
             {
-                string response = client.GetStringAsync(url).Result;
+                string response = await client.GetStringAsync(url);
                 ObservableCollection<Article> List = JsonConvert.DeserializeObject<ObservableCollection<Article>>(response);
                 return List;
             }

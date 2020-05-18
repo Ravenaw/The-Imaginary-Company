@@ -59,9 +59,9 @@ namespace The_Imaginary_Company
         public int Quantity { get; set; }
         public string Location { get; set; }
         public string Owner { get; set; }
-        private void UpdateDb()
+        private async Task UpdateDb()
         {
-            ObservableCollection<Article> temp = Worker.GetArticlesAsync();
+            ObservableCollection<Article> temp = await Worker.GetArticlesAsync();
             justcatalog.Update(temp);
         }
         public void VMSetUser(string u,string p)
