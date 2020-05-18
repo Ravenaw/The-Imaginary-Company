@@ -25,6 +25,8 @@ namespace The_Imaginary_Company
             AddArticleCommand=new RelayCommand(AddArticle);
             SearchArticleCommand= new RelayCommand(Search);
             DeleteCommand = new RelayCommand(Delete);
+            DeleteForEditCommand= new RelayCommand(DeleteForEdit);
+            EditArticleCommand= new RelayCommand(Edit);
             UpdateDb();
            
         }
@@ -46,8 +48,10 @@ namespace The_Imaginary_Company
         public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
 
         public ICommand SearchArticleCommand { get; set; }
+        public ICommand EditArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand DeleteForEditCommand { get; set; }
         public Article SearchResult = new Article();
 
 
@@ -95,6 +99,17 @@ namespace The_Imaginary_Company
             SearchResult.Name = "deleted";
             OnPropertyChanged("Name");
             //workaround
+            Navigate(typeof(Details));
+        }
+
+        public void DeleteForEdit()
+        {
+            justcatalog.RemoveFromList(SearchResult);
+            Navigate(typeof(EditItem));
+        }
+        public void Edit()
+        {
+            justcatalog.AddToList(SearchResult);
             Navigate(typeof(Details));
         }
 

@@ -12,25 +12,21 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using The_Imaginary_Company.View;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace The_Imaginary_Company
+namespace The_Imaginary_Company.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Details : Page
+    public sealed partial class EditItem : Page
     {
-        public Details()
+        public EditItem()
         {
             this.InitializeComponent();
             this.DataContext = ViewModel.Instance.SearchResult;
-            Delete.DataContext = ViewModel.Instance;
             Edit.DataContext = ViewModel.Instance;
         }
-
-        
     }
 }
