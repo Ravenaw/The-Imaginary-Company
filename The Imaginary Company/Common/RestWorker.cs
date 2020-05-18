@@ -13,12 +13,12 @@ namespace The_Imaginary_Company.Common
 {
     class RestWorker
     {
-        string localhost = "https://ticweb.azurewebsites.net";
+        string serverurl = "https://ticweb.azurewebsites.net";
        
         public async Task<ObservableCollection<Article>> GetArticlesAsync()
         {
 
-            string url = localhost + "/api/Articles";
+            string url = serverurl + "/api/Articles";
             using (HttpClient client = new HttpClient())
             {
                 string response = await client.GetStringAsync(url);
@@ -27,74 +27,73 @@ namespace The_Imaginary_Company.Common
             }
         }
 
-       
-        //public async Task<Hotel> GetHotel(int id)
-        //{
+        public async Task<Article> GetArticleAsync(int TIC)
+        {
 
-        //    string url = localhost + "/api/Hotel/" + id;
-        //    using (HttpClient client = new HttpClient())
-        //    {
-        //        string response = await client.GetStringAsync(url);
-        //        Hotel List = JsonConvert.DeserializeObject<Hotel>(response);
-        //        return List;
-        //    }
-        //}
-        //public void CreateHotel(Hotel hotel)
-        //{
+            string url = serverurl + "/api/Article/" +TIC;
+            using (HttpClient client = new HttpClient())
+            {
+                string response = await client.GetStringAsync(url);
+                Article theArticle = JsonConvert.DeserializeObject<Article>(response);
+                return theArticle;
+            }
+        }
 
-        //    string url = localhost + "/api/Hotel";
+        public void CreateArticle(Article article)
+        {
 
-        //    using (HttpClient client = new HttpClient())
-        //    {
-        //        string data = JsonConvert.SerializeObject(hotel);
-        //        StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-        //        HttpResponseMessage response = client.PostAsync(url, content).Result;
-        //        try
-        //        {
-        //            response.EnsureSuccessStatusCode();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.Message);
-        //        }
-        //    }
-        //}
+            string url = serverurl + "/api/Article";
 
+            using (HttpClient client = new HttpClient())
+            {
+                string data = JsonConvert.SerializeObject(article);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = client.PostAsync(url, content).Result;
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
 
-        //public void UpdateHotel(int id, Hotel hotel)
-        //{
-        //    string url = localhost + "/api/Hotel/" + id;
-        //    using (HttpClient client = new HttpClient())
-        //    {
-        //        string data = JsonConvert.SerializeObject(hotel);
-        //        StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-        //        HttpResponseMessage response = client.PutAsync(url, content).Result;
-        //        try
-        //        {
-        //            response.EnsureSuccessStatusCode();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.Message);
-        //        }
-        //    }
-        //}
-        //public void DeleteHotel(int id)
-        //{
-        //    string url = localhost + "/api/Hotel/" + id;
+        public void UpdateHotel(int TIC, Article article)
+        {
+            string url = serverurl + "/api/Article/" + TIC;
+            using (HttpClient client = new HttpClient())
+            {
+                string data = JsonConvert.SerializeObject(article);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = client.PutAsync(url, content).Result;
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        public void DeleteHotel(int TIC)
+        {
+            string url = serverurl + "/api/Article/" + TIC;
 
-        //    using (HttpClient client = new HttpClient())
-        //    {
-        //        HttpResponseMessage response = client.DeleteAsync(url).Result;
-        //        try
-        //        {
-        //            response.EnsureSuccessStatusCode();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.Message);
-        //        }
-        //    }
-        //}
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = client.DeleteAsync(url).Result;
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
     }
 }
