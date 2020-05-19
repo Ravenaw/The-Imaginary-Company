@@ -26,7 +26,7 @@ namespace The_Imaginary_Company.View
         {
             this.InitializeComponent();
             this.DataContext = ViewModel.Instance.SearchResult;
-            Edit.DataContext = ViewModel.Instance;
+            Buttons.DataContext = ViewModel.Instance;
         }
     }
 }

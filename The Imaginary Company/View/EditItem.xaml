@@ -46,8 +46,8 @@
                         <TextBox Height ="35" Text="{Binding Weight, Mode=TwoWay}"></TextBox>
                         <TextBox Height ="35" Text="{Binding Quantity, Mode=TwoWay}"></TextBox>
                         <TextBox Height ="35" Text="{Binding Location, Mode=TwoWay}"></TextBox>
-                        <StackPanel Orientation="Horizontal" Spacing="50">
-                            <Button Content="Cancel" Width="75"></Button>
+                        <StackPanel Orientation="Horizontal" Spacing="50" x:Name="Buttons">
+                            <Button Content="Cancel" Width="75" Command="{Binding CancelOnEditCommand}"></Button>
                             <Button Content="Apply" Command="{Binding EditArticleCommand}" Width="75" Background="DarkRed"></Button>
                         </StackPanel>
                     </StackPanel>

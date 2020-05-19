@@ -22,13 +22,14 @@ namespace The_Imaginary_Company
     {
         public ViewModel()
         {
-            AddArticleCommand=new RelayCommand(AddArticle);
-            SearchArticleCommand= new RelayCommand(Search);
+            AddArticleCommand = new RelayCommand(AddArticle);
+            SearchArticleCommand = new RelayCommand(Search);
             DeleteCommand = new RelayCommand(Delete);
             GoToEditCommand = new RelayCommand(GoToEdit);
-            EditArticleCommand= new RelayCommand(Edit);
+            EditArticleCommand = new RelayCommand(Edit);
+            CancelOnEditCommand = new RelayCommand(CancelOnEdit);
             UpdateDb();
-           
+
         }
 
         public static ViewModel Instance { get { return Nested.instance; } }
@@ -52,6 +53,7 @@ namespace The_Imaginary_Company
         public ICommand AddArticleCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand GoToEditCommand { get; set; }
+        public ICommand CancelOnEditCommand { get; set; }
 
         public Article SearchResult = new Article();
         public Article Temp = new Article();
@@ -70,9 +72,9 @@ namespace The_Imaginary_Company
             ObservableCollection<Article> temp = await Worker.GetArticlesAsync();
             justcatalog.Update(temp);
         }
-        public void VMSetUser(string u,string p)
+        public void VMSetUser(string u, string p)
         {
-            CurrentUser.SetUser(u,p);
+            CurrentUser.SetUser(u, p);
         }
 
         public void AddArticle()
@@ -88,7 +90,7 @@ namespace The_Imaginary_Company
         public void Search()
         {
             if (TIC != 0)
-                SearchResult= justcatalog.FindByTIC(TIC);
+                SearchResult = justcatalog.FindByTIC(TIC);
             else
             {
                 SearchResult = IAN != 0 ? justcatalog.FindByIAN(IAN) : justcatalog.FindByLocation(Location);
@@ -116,6 +118,11 @@ namespace The_Imaginary_Company
         {
             Worker.UpdateArticle(Temp.TIC, SearchResult);
             //UpdateDb();
+            Navigate(typeof(Details));
+        }
+
+        public void CancelOnEdit()
+        {
             Navigate(typeof(Details));
         }
 
