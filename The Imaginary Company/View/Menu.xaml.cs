@@ -60,20 +60,21 @@ namespace The_Imaginary_Company
 
         private void Content_Navigated(object sender, NavigationEventArgs e)
         {
+            ViewModel.Instance.UpdateDb();
             Page destinationPage = e.Content as Page;
-            if (destinationPage.GetType() == typeof(Login))
+            if (destinationPage.GetType() == typeof(Catalog))
             {
                 // Change property of destination page
                 //(destinationPage as ProductPage).viewModel = viewModel;
             }
 
-            if (destinationPage.GetType() == typeof(Login))
+            if (destinationPage.GetType() == typeof(Details))
             {
                 // Change property of destination page
                 //(destinationPage as ShoppingCartPage).viewModel = viewModel;
             }
 
-            if (destinationPage.GetType() == typeof(Login))
+            if (destinationPage.GetType() == typeof(Search))
             {
                 // Change property of destination page
                 //(destinationPage as OrderHistory).viewModel = viewModel;

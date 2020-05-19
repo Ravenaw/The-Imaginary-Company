@@ -131,7 +131,7 @@ namespace AzureWebService.DBAccess
 
         public void deleteArticle(int id)
         {
-            string query = "delete form Articles where TIC=@id"; //query here...
+            string query = "delete from Articles where TIC=@id"; //query here...
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();

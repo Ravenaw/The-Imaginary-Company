@@ -30,7 +30,7 @@ namespace The_Imaginary_Company.Common
         public async Task<Article> GetArticleAsync(int TIC)
         {
 
-            string url = serverurl + "/api/Article/" +TIC;
+            string url = serverurl + "/api/Articles/" +TIC;
             using (HttpClient client = new HttpClient())
             {
                 string response = await client.GetStringAsync(url);
@@ -42,7 +42,7 @@ namespace The_Imaginary_Company.Common
         public void CreateArticle(Article article)
         {
 
-            string url = serverurl + "/api/Article";
+            string url = serverurl + "/api/Articles";
 
             using (HttpClient client = new HttpClient())
             {
@@ -60,9 +60,9 @@ namespace The_Imaginary_Company.Common
             }
         }
 
-        public void UpdateHotel(int TIC, Article article)
+        public void UpdateArticle(int TIC, Article article)
         {
-            string url = serverurl + "/api/Article/" + TIC;
+            string url = serverurl + "/api/Articles/" + TIC;
             using (HttpClient client = new HttpClient())
             {
                 string data = JsonConvert.SerializeObject(article);
@@ -78,9 +78,9 @@ namespace The_Imaginary_Company.Common
                 }
             }
         }
-        public void DeleteHotel(int TIC)
+        public void DeleteArticle(int TIC)
         {
-            string url = serverurl + "/api/Article/" + TIC;
+            string url = serverurl + "/api/Articles/" + TIC;
 
             using (HttpClient client = new HttpClient())
             {

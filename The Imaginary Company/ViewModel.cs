@@ -64,7 +64,7 @@ namespace The_Imaginary_Company
         public int Quantity { get; set; }
         public string Location { get; set; }
         public string Owner { get; set; }
-        private async Task UpdateDb()
+        public async Task UpdateDb()
         {
             ObservableCollection<Article> temp = await Worker.GetArticlesAsync();
             justcatalog.Update(temp);
@@ -76,8 +76,11 @@ namespace The_Imaginary_Company
 
         public void AddArticle()
         {
-            justcatalog.AddToList(new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name));
-            SearchResult = justcatalog.FindByTIC(TIC);
+            //justcatalog.AddToList(new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name));
+            Temp = new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name);
+            Worker.CreateArticle(Temp);
+            //UpdateDb();
+            SearchResult = Temp;
             Navigate(typeof(Details));
         }
 
@@ -96,10 +99,10 @@ namespace The_Imaginary_Company
 
         public void Delete()
         {
-            justcatalog.RemoveFromList(SearchResult);
-            SearchResult.Name = "deleted";
-            OnPropertyChanged("Name");
-            //workaround
+            Worker.DeleteArticle(SearchResult.TIC);
+            //UpdateDb();
+
+            SearchResult.Name += " - Deleted";
             Navigate(typeof(Details));
         }
 
@@ -110,8 +113,8 @@ namespace The_Imaginary_Company
         }
         public void Edit()
         {
-            justcatalog.RemoveFromList(Temp);
-            justcatalog.AddToList(SearchResult);
+            Worker.UpdateArticle(Temp.TIC, SearchResult);
+            //UpdateDb();
             Navigate(typeof(Details));
         }
 
