@@ -91,13 +91,15 @@ namespace InventoryLibrary
         private string Name { get; set; }
         private int PhoneNo { get; set; }
         private string Email { get; set; }
+        private string Address { get; set; }
 
-        public User(string username, string password, int phoneno, string email )
+        public User(string username, string password, int phoneno, string email, string address )
         {
             Username = username;
             Password = password;
             PhoneNo = phoneno;
             Email = email;
+            Address = address;
         }
 
         public User()
@@ -106,12 +108,12 @@ namespace InventoryLibrary
 
         public static List<User> UsersList = new List<User>()
         {
-            new User("Aukse", "124Bla", 246412, "aukse@blabla.dot"),
-            new User("Marcell", "124Pla", 89626, "marcell@blabla.dot"),
-            new User("Alex", "yes", 5962524, "alex@blabla.dot"),
-            new User("David","124Blu", 5453152, "david@blabla.dot"),
-            new User("Andrea", "124Dbu",1754612, "andreea@blabla.dot"),
-            new User("ticAdmin","ticPassword1", 545658, "admin@blabla.dot")
+            new User("Aukse", "124Bla", 246412, "aukse@blabla.dot", "Denmark"),
+            new User("Marcell", "0000", 89626, "marcell@blabla.dot", "Taastrup"),
+            new User("Alex", "yes", 5962524, "alex@blabla.dot", "Copenhagen"),
+            new User("David","124Blu", 5453152, "david@blabla.dot", "Roskilde"),
+            new User("Andrea", "124Dbu",1754612, "andreea@blabla.dot", "Roskilde"),
+            new User("ticAdmin","ticPassword1", 0, null, null)
         };
 
         public void SetUser(string user, string pass)
