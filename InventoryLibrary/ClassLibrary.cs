@@ -88,11 +88,16 @@ namespace InventoryLibrary
     {
         private string Username { get; set; }
         private string Password { get; set; }
+        private string Name { get; set; }
+        private int PhoneNo { get; set; }
+        private string Email { get; set; }
 
-        public User(string username, string password)
+        public User(string username, string password, int phoneno, string email )
         {
             Username = username;
             Password = password;
+            PhoneNo = phoneno;
+            Email = email;
         }
 
         public User()
@@ -101,12 +106,12 @@ namespace InventoryLibrary
 
         public static List<User> UsersList = new List<User>()
         {
-            new User("Aukse", "124Bla"),
-            new User("Marcell", "124Pla"),
-            new User("Alex", "yes"),
-            new User("David","124Blu"),
-            new User("Andrea", "124Dbu"),
-            new User("ticAdmin","ticPassword1")
+            new User("Aukse", "124Bla", 246412, "aukse@blabla.dot"),
+            new User("Marcell", "124Pla", 89626, "marcell@blabla.dot"),
+            new User("Alex", "yes", 5962524, "alex@blabla.dot"),
+            new User("David","124Blu", 5453152, "david@blabla.dot"),
+            new User("Andrea", "124Dbu",1754612, "andreea@blabla.dot"),
+            new User("ticAdmin","ticPassword1", 545658, "admin@blabla.dot")
         };
 
         public void SetUser(string user, string pass)
@@ -125,7 +130,7 @@ namespace InventoryLibrary
         }
         public override string ToString()
         {
-            return "You are not allowed to view this";
+            return $"Name: {Name}, Email: {Email}, Phone Number: {PhoneNo}";
         }
 
     }
