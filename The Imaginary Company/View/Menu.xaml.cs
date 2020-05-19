@@ -26,7 +26,6 @@ namespace The_Imaginary_Company
         public Menu()
         {
             this.InitializeComponent();
-            GoToPage(typeof(Catalog));
         }
 
         public void GoToPage(Type page)
