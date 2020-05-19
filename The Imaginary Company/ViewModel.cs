@@ -24,7 +24,7 @@ namespace The_Imaginary_Company
         {
             AddArticleCommand = new RelayCommand(AddArticle);
             SearchArticleCommand = new RelayCommand(Search);
-            DeleteCommand = new RelayCommand(Delete);
+            DeleteCommand = new RelayCommand(DisplayDeleteItemDialog);
             GoToEditCommand = new RelayCommand(GoToEdit);
             EditArticleCommand = new RelayCommand(Edit);
             CancelOnEditCommand = new RelayCommand(CancelOnEdit);
@@ -111,6 +111,28 @@ namespace The_Imaginary_Company
 
             SearchResult.Name += " - Deleted";
             Navigate(typeof(Details));
+        }
+
+        public async void DisplayDeleteItemDialog()
+        {
+            ContentDialog deleteFileDialog = new ContentDialog
+            {
+                Title = "Delete item permanently?",
+                Content = "If you delete this item, you won't be able to recover it. Do you want to delete it?",
+                PrimaryButtonText = "Delete",
+                CloseButtonText = "Cancel"
+            };
+
+            ContentDialogResult result = await deleteFileDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                Delete();
+            }
+            else
+            {
+
+            }
         }
 
         public void GoToEdit()
