@@ -53,10 +53,6 @@ namespace The_Imaginary_Company
         {
             Content.Navigate(typeof(Search), e);
         }
-        private void Details_Click(object sender, RoutedEventArgs e)
-        {
-            Content.Navigate(typeof(Details), e);
-        }
 
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
@@ -65,7 +61,7 @@ namespace The_Imaginary_Company
 
         private async void Content_Navigated(object sender, NavigationEventArgs e)
         {
-            ViewModel.Instance.UpdateDb();
+            await ViewModel.Instance.UpdateDb();
 
             //Page destinationPage = e.Content as Page;
             //if (destinationPage.GetType() == typeof(Catalog))
