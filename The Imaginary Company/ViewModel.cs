@@ -65,7 +65,8 @@ namespace The_Imaginary_Company
         public string Name { get; set; }
         public int Weight { get; set; }
         public int Quantity { get; set; }
-        public string Location { get; set; }
+        private string _loc;
+        public string Location { get { return _loc; } set { _loc = value.Trim().ToUpper(); } }
         public string Owner { get; set; }
         public async Task UpdateDb()
         {
@@ -79,21 +80,25 @@ namespace The_Imaginary_Company
 
         public void AddArticle()
         {
-            //justcatalog.AddToList(new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name));
             Temp = new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name);
             Worker.CreateArticle(Temp);
-            //UpdateDb();
             SearchResult = Temp;
             Navigate(typeof(Details));
         }
 
-        public void Search()
+        public async void Search()
         {
             if (TIC != 0)
-                SearchResult = justcatalog.FindByTIC(TIC);
+                SearchResult = await Worker.GetArticleAsync(TIC);
             else
             {
-                SearchResult = IAN != 0 ? justcatalog.FindByIAN(IAN) : justcatalog.FindByLocation(Location);
+                if (IAN != 0)
+                    SearchResult = await Worker.GetArticleByIanAsync(IAN);
+                else
+                {
+                    if (!Location.Equals(""))
+                        SearchResult = await Worker.GetArticleByLocationAsync(Location);
+                }
             }
 
             Navigate(typeof(Details));

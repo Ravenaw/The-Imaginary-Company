@@ -39,6 +39,30 @@ namespace The_Imaginary_Company.Common
             }
         }
 
+        public async Task<Article> GetArticleByIanAsync(int IAN)
+        {
+
+            string url = serverurl + "/api/Articles/byIAN/" + IAN;
+            using (HttpClient client = new HttpClient())
+            {
+                string response = await client.GetStringAsync(url);
+                Article theArticle = JsonConvert.DeserializeObject<Article>(response);
+                return theArticle;
+            }
+        }
+
+        public async Task<Article> GetArticleByLocationAsync(string Loc)
+        {
+
+            string url = serverurl + "/api/Articles/byLoc/" + Loc;
+            using (HttpClient client = new HttpClient())
+            {
+                string response = await client.GetStringAsync(url);
+                Article theArticle = JsonConvert.DeserializeObject<Article>(response);
+                return theArticle;
+            }
+        }
+
         public void CreateArticle(Article article)
         {
 
