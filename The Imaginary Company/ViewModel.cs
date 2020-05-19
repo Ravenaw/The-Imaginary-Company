@@ -29,7 +29,6 @@ namespace The_Imaginary_Company
             EditArticleCommand = new RelayCommand(Edit);
             CancelOnEditCommand = new RelayCommand(CancelOnEdit);
             UpdateDb();
-
         }
 
         public static ViewModel Instance { get { return Nested.instance; } }

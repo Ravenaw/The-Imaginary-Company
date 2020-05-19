@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
+
     <Grid>
         <Grid >
             <Grid.ColumnDefinitions>
@@ -49,8 +49,8 @@
 
             </StackPanel>
             <Grid x:Name="Buttons" Grid.Column="3" Grid.Row="3">
-                <Button Command="{Binding GoToEditCommand}"  Background="Gray"  Height="30" Width="60" VerticalAlignment="Top" Content="Edit" Margin="25" />
-            <Button Command="{Binding DeleteCommand}"  Background="Gray" Height="30" Width="60" VerticalAlignment="Top" Content="Delete" Margin="105,25,0,0"/>
+                <Button Command="{Binding GoToEditCommand}" Height="30" Width="60" VerticalAlignment="Top" Content="Edit" Margin="25" />
+                <Button Command="{Binding DeleteCommand}"  Background="DarkRed" Height="30" Width="60" VerticalAlignment="Top" Content="Delete" Margin="105,25,0,0"/>
             </Grid>
         </Grid>
     </Grid>
