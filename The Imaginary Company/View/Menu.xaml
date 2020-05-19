@@ -120,14 +120,14 @@
                         </Button>-->
                     </Grid>
                     <Grid MaxHeight="50" Grid.Row="1" VerticalAlignment="Bottom">
-                        <Button Click="ContactUs_Click" Style="{StaticResource ButtonStyle}">
+                        <Button Click="LogOut_Click" Style="{StaticResource ButtonStyle}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition  Width="50"></ColumnDefinition>
                                     <ColumnDefinition Width="150"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <FontIcon Grid.Column="0" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE77B;"></FontIcon>
-                                <TextBlock Grid.Column="1" Text="Placeholder" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Grid.Column="1" Text="Log Out" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 </TextBlock>
                             </Grid>
                         </Button>

@@ -58,9 +58,9 @@ namespace The_Imaginary_Company
             Content.Navigate(typeof(Details), e);
         }
 
-        private void ContactUs_Click(object sender, RoutedEventArgs e)
+        private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            Content.Navigate(typeof(Login), e);
+            Frame.Navigate(typeof(Login), e);
         }
 
         private async void Content_Navigated(object sender, NavigationEventArgs e)
