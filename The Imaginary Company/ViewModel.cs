@@ -25,7 +25,7 @@ namespace The_Imaginary_Company
             AddArticleCommand=new RelayCommand(AddArticle);
             SearchArticleCommand= new RelayCommand(Search);
             DeleteCommand = new RelayCommand(Delete);
-            DeleteForEditCommand= new RelayCommand(DeleteForEdit);
+            GoToEditCommand = new RelayCommand(GoToEdit);
             EditArticleCommand= new RelayCommand(Edit);
             UpdateDb();
            
@@ -51,7 +51,8 @@ namespace The_Imaginary_Company
         public ICommand EditArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
-        public ICommand DeleteForEditCommand { get; set; }
+        public ICommand GoToEditCommand { get; set; }
+
         public Article SearchResult = new Article();
         public Article Temp = new Article();
 
@@ -106,7 +107,7 @@ namespace The_Imaginary_Company
             Navigate(typeof(Details));
         }
 
-        public void DeleteForEdit()
+        public void GoToEdit()
         {
             Temp = SearchResult;
             Navigate(typeof(EditItem));
