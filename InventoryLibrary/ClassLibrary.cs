@@ -40,13 +40,10 @@ namespace InventoryLibrary
     public class ArticleCatalog
     {
         private static ObservableCollection<Article> List = new ObservableCollection<Article>()
-        {
-            new Article(2001,5641,"Dolce Gusto", 5, 10, "Row 3", "Capsules")
-        };
+        {};
 
         public ArticleCatalog()
         {
-            //grab from server
         }
 
         public ObservableCollection<Article> GetAll()
@@ -82,7 +79,8 @@ namespace InventoryLibrary
             return List.FirstOrDefault(x => x.Location == location);
         }
 
-        public ObservableCollection<Article> Articles => List;
+        //what is this for? is it important?
+        //public ObservableCollection<Article> Articles => List;
     }
 
 

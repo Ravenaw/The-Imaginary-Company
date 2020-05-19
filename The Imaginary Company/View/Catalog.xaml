@@ -13,7 +13,7 @@
         <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Spacing="20">
             <TextBlock Text="Catalog" FontSize="72" HorizontalAlignment="Center"></TextBlock>
             <ScrollViewer>
-                <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="False" MaxHeight="800">
+                <controls:DataGrid x:Name="dataGrid" AutoGenerateColumns="False" MaxHeight="800" IsReadOnly="True" AlternatingRowBackground="DarkSlateGray">
                     <controls:DataGrid.Columns>
                         <controls:DataGridTextColumn Header="TIC No." Binding="{Binding TIC}"></controls:DataGridTextColumn>
                         <controls:DataGridTextColumn Header="IAN No." Binding="{Binding IAN}"></controls:DataGridTextColumn>

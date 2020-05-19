@@ -24,11 +24,11 @@ namespace The_Imaginary_Company
         {
             AddArticleCommand = new RelayCommand(AddArticle);
             SearchArticleCommand = new RelayCommand(Search);
-            DeleteCommand = new RelayCommand(Delete);
+            DeleteCommand = new RelayCommand(DisplayDeleteItemDialog);
             GoToEditCommand = new RelayCommand(GoToEdit);
             EditArticleCommand = new RelayCommand(Edit);
             CancelOnEditCommand = new RelayCommand(CancelOnEdit);
-            UpdateDb();
+            //UpdateDb();
         }
 
         public static ViewModel Instance { get { return Nested.instance; } }
@@ -44,8 +44,8 @@ namespace The_Imaginary_Company
         }
         private RestWorker Worker = new RestWorker();
         private User CurrentUser = new User();
-        private ArticleCatalog justcatalog = new ArticleCatalog();
-        public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
+        public ArticleCatalog AllArticles = new ArticleCatalog();
+        //public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
 
         public ICommand SearchArticleCommand { get; set; }
         public ICommand EditArticleCommand { get; set; }
@@ -70,7 +70,8 @@ namespace The_Imaginary_Company
         public async Task UpdateDb()
         {
             ObservableCollection<Article> temp = await Worker.GetArticlesAsync();
-            justcatalog.Update(temp);
+            AllArticles.Update(temp);
+            OnPropertyChanged("AllArticles");
         }
         public void VMSetUser(string u, string p)
         {
@@ -113,6 +114,28 @@ namespace The_Imaginary_Company
             Navigate(typeof(Details));
         }
 
+        public async void DisplayDeleteItemDialog()
+        {
+            ContentDialog deleteFileDialog = new ContentDialog
+            {
+                Title = "Delete item permanently?",
+                Content = "If you delete this item, you won't be able to recover it. Do you want to delete it?",
+                PrimaryButtonText = "Delete",
+                CloseButtonText = "Cancel"
+            };
+
+            ContentDialogResult result = await deleteFileDialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                Delete();
+            }
+            else
+            {
+
+            }
+        }
+
         public void GoToEdit()
         {
             Temp = SearchResult;
@@ -145,7 +168,9 @@ namespace The_Imaginary_Company
         {
             return CurrentUser.ValidUser();
         }
-        public ObservableCollection<Article> ArticleCollection => justcatalog.Articles;
+
+        //what is this?
+        //public ObservableCollection<Article> ArticleCollection => AllArticles.Articles;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

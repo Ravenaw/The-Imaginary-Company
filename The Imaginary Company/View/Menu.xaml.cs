@@ -25,7 +25,12 @@ namespace The_Imaginary_Company
     {
         public Menu()
         {
-            this.InitializeComponent();
+            this.InitializeComponent();           
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+           Content.Navigate(typeof(Catalog), e);
         }
 
         public void GoToPage(Type page)
@@ -58,27 +63,28 @@ namespace The_Imaginary_Company
             Content.Navigate(typeof(Login), e);
         }
 
-        private void Content_Navigated(object sender, NavigationEventArgs e)
+        private async void Content_Navigated(object sender, NavigationEventArgs e)
         {
             ViewModel.Instance.UpdateDb();
-            Page destinationPage = e.Content as Page;
-            if (destinationPage.GetType() == typeof(Catalog))
-            {
-                // Change property of destination page
-                //(destinationPage as ProductPage).viewModel = viewModel;
-            }
 
-            if (destinationPage.GetType() == typeof(Details))
-            {
-                // Change property of destination page
-                //(destinationPage as ShoppingCartPage).viewModel = viewModel;
-            }
+            //Page destinationPage = e.Content as Page;
+            //if (destinationPage.GetType() == typeof(Catalog))
+            //{
+            //    Change property of destination page
+            //   (destinationPage as ProductPage).viewModel = viewModel;
+            //}
 
-            if (destinationPage.GetType() == typeof(Search))
-            {
-                // Change property of destination page
-                //(destinationPage as OrderHistory).viewModel = viewModel;
-            }
+            //if (destinationPage.GetType() == typeof(Details))
+            //{
+            //    Change property of destination page
+            //   (destinationPage as ShoppingCartPage).viewModel = viewModel;
+            //}
+
+            //if (destinationPage.GetType() == typeof(Search))
+            //{
+            //    Change property of destination page
+            //   (destinationPage as OrderHistory).viewModel = viewModel;
+            //}
         }
     }
 }
