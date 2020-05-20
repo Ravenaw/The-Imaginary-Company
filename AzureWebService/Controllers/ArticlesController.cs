@@ -35,13 +35,15 @@ namespace AzureWebService.Controllers
         [Route("api/Articles/byLoc/{loc}")]
         public Article GetByLocation(string loc)
         {
+
             return articleAccess.GetArticleByLocation(loc);
         }
 
         // POST: api/Articles
         public void Post([FromBody] Article article)
         {
-            articleAccess.createArticle(article);
+            if (Get(article.TIC).TIC != article.TIC)
+                articleAccess.createArticle(article);
         }
 
         // PUT: api/Articles/5
