@@ -42,8 +42,10 @@ namespace AzureWebService.Controllers
         // POST: api/Articles
         public void Post([FromBody] Article article)
         {
-            if (Get(article.TIC).TIC != article.TIC)
+            if (Get(article.TIC).TIC != article.TIC && article.Location.Length == 6 && article.Quantity != 0 && article.Weight != 0)
+            {
                 articleAccess.createArticle(article);
+            }
         }
 
         // PUT: api/Articles/5
