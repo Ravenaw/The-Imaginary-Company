@@ -19,14 +19,14 @@ namespace AzureWebService.Controllers
         }
 
         // GET: api/Articles/5
-        public Article Get(int id)
+        public Article Get(string id)
         {
             return articleAccess.GetArticleByTIC(id);
         }
 
         [HttpGet]
         [Route("api/Articles/byIAN/{ian}")]
-        public Article GetByIAN(int ian)
+        public Article GetByIAN(string ian)
         {
             return articleAccess.GetArticleByIAN(ian);
         }
@@ -47,13 +47,13 @@ namespace AzureWebService.Controllers
         }
 
         // PUT: api/Articles/5
-        public void Put(int id, [FromBody] Article article)
+        public void Put(string id, [FromBody] Article article)
         {
             articleAccess.updateArticle(id, article);
         }
 
         // DELETE: api/Articles/5
-        public void Delete(int id)
+        public void Delete(string id)
         {
             articleAccess.deleteArticle(id);
         }

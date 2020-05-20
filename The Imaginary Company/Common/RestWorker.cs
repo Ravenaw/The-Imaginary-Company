@@ -27,7 +27,7 @@ namespace The_Imaginary_Company.Common
             }
         }
 
-        public async Task<Article> GetArticleAsync(int TIC)
+        public async Task<Article> GetArticleAsync(string TIC)
         {
 
             string url = serverurl + "/api/Articles/" +TIC;
@@ -39,7 +39,7 @@ namespace The_Imaginary_Company.Common
             }
         }
 
-        public async Task<Article> GetArticleByIanAsync(int IAN)
+        public async Task<Article> GetArticleByIanAsync(string IAN)
         {
 
             string url = serverurl + "/api/Articles/byIAN/" + IAN;
@@ -84,7 +84,7 @@ namespace The_Imaginary_Company.Common
             }
         }
 
-        public void UpdateArticle(int TIC, Article article)
+        public void UpdateArticle(string TIC, Article article)
         {
             string url = serverurl + "/api/Articles/" + TIC;
             using (HttpClient client = new HttpClient())
@@ -102,7 +102,7 @@ namespace The_Imaginary_Company.Common
                 }
             }
         }
-        public void DeleteArticle(int TIC)
+        public void DeleteArticle(string TIC)
         {
             string url = serverurl + "/api/Articles/" + TIC;
 

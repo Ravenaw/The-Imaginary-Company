@@ -12,7 +12,7 @@ namespace InventoryLibrary
         {
 
         }
-        public Article(int tic, int ian, string owner, int quantity, int weight, string location, string name)
+        public Article(string tic, string ian, string owner, int quantity, int weight, string location, string name)
         {
             TIC = tic;
             IAN = ian;
@@ -22,8 +22,8 @@ namespace InventoryLibrary
             Location = location;
             Name = name;
         }
-        public int TIC { get; set; }
-        public int IAN { get; set; }
+        public string TIC { get; set; }
+        public string IAN { get; set; }
         public string Name { get; set; }
         public string Owner { get; set; }
         public int Quantity { get; set; }
@@ -66,11 +66,11 @@ namespace InventoryLibrary
             List.Remove(Art);
         }
 
-        public Article FindByTIC(int tic)
+        public Article FindByTIC(string tic)
         {
             return List.FirstOrDefault(x => x.TIC == tic);
         }
-        public Article FindByIAN(int ian)
+        public Article FindByIAN(string ian)
         {
             return List.FirstOrDefault(x => x.IAN == ian);
         }

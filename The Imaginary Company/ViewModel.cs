@@ -59,8 +59,8 @@ namespace The_Imaginary_Company
 
 
 
-        public int TIC { get; set; }
-        public int IAN { get; set; }
+        public string TIC { get; set; }
+        public string IAN { get; set; }
         public string Name { get; set; }
         public int Weight { get; set; }
         public int Quantity { get; set; }
@@ -88,11 +88,11 @@ namespace The_Imaginary_Company
 
         public async void Search()
         {
-            if (TIC != 0)
+            if (TIC != "")
                 SearchResult = await Worker.GetArticleAsync(TIC);
             else
             {
-                if (IAN != 0)
+                if (IAN != "")
                     SearchResult = await Worker.GetArticleByIanAsync(IAN);
                 else
                 {

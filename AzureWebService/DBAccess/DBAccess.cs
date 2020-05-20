@@ -25,8 +25,8 @@ namespace AzureWebService.DBAccess
                 {
                     Article theArticle = new Article
                     {
-                        TIC = reader.GetInt32(0),
-                        IAN = reader.GetInt32(1),
+                        TIC = reader.GetString(0),
+                        IAN = reader.GetString(1),
                         Owner = reader.GetString(2),
                         Name = reader.GetString(3),
                         Quantity = reader.GetInt32(4),
@@ -40,7 +40,7 @@ namespace AzureWebService.DBAccess
             }
         }
 
-        public Article GetArticleByTIC(int id)
+        public Article GetArticleByTIC(string id)
         {
             string query = "select * from Articles where TIC=@id";
             Article returnArticle = new Article();
@@ -52,8 +52,8 @@ namespace AzureWebService.DBAccess
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    returnArticle.TIC = reader.GetInt32(0);
-                    returnArticle.IAN = reader.GetInt32(1);
+                    returnArticle.TIC = reader.GetString(0);
+                    returnArticle.IAN = reader.GetString(1);
                     returnArticle.Owner = reader.GetString(2);
                     returnArticle.Name = reader.GetString(3);
                     returnArticle.Quantity = reader.GetInt32(4);
@@ -64,7 +64,7 @@ namespace AzureWebService.DBAccess
             }
         }
 
-        public Article GetArticleByIAN(int id)
+        public Article GetArticleByIAN(string id)
         {
             string query = "select * from Articles where IAN=@id";
             Article returnArticle = new Article();
@@ -76,8 +76,8 @@ namespace AzureWebService.DBAccess
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    returnArticle.TIC = reader.GetInt32(0);
-                    returnArticle.IAN = reader.GetInt32(1);
+                    returnArticle.TIC = reader.GetString(0);
+                    returnArticle.IAN = reader.GetString(1);
                     returnArticle.Owner = reader.GetString(2);
                     returnArticle.Name = reader.GetString(3);
                     returnArticle.Quantity = reader.GetInt32(4);
@@ -100,8 +100,8 @@ namespace AzureWebService.DBAccess
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    returnArticle.TIC = reader.GetInt32(0);
-                    returnArticle.IAN = reader.GetInt32(1);
+                    returnArticle.TIC = reader.GetString(0);
+                    returnArticle.IAN = reader.GetString(1);
                     returnArticle.Owner = reader.GetString(2);
                     returnArticle.Name = reader.GetString(3);
                     returnArticle.Quantity = reader.GetInt32(4);
@@ -131,7 +131,7 @@ namespace AzureWebService.DBAccess
             }
         }
 
-        public void deleteArticle(int id)
+        public void deleteArticle(string id)
         {
             string query = "delete from Articles where TIC=@id"; //query here...
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -143,7 +143,7 @@ namespace AzureWebService.DBAccess
             }
         }
 
-        public void updateArticle(int id, Article article)
+        public void updateArticle(string id, Article article)
         {
             string query = "update Articles set TIC=@tic, IAN=@ian, Name=@name, Owner=@owner, Location=@location, Weight=@weight, Quantity=@quantity where TIC=@id"; //query here...
             using (SqlConnection conn = new SqlConnection(connectionString))
