@@ -15,6 +15,10 @@ using The_Imaginary_Company.View;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using The_Imaginary_Company.Common;
+using Microsoft.Toolkit.Extensions;
+using Windows.UI.Popups;
+using System.ServiceModel.Channels;
+using System.Security.Cryptography.X509Certificates;
 
 namespace The_Imaginary_Company
 {
@@ -81,11 +85,23 @@ namespace The_Imaginary_Company
         public void AddArticle()
         {
             Temp = new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name);
-            Worker.CreateArticle(Temp);
-            SearchResult = Temp;
-            Navigate(typeof(Details));
-        }
+            if (Temp.TIC.IsNumeric() && Temp.IAN.IsNumeric() && Temp.Quantity > 0 && Temp.Weight > 0 && (Temp.IAN.Length == 8 || Temp.IAN.Length == 16))
+            {
+                Worker.CreateArticle(Temp);
+                SearchResult = Temp;
+                Navigate(typeof(Details));
+            }
+            else
+            {
+                AddError();
+            }
 
+        }
+        public async void AddError()
+        {
+            MessageDialog error = new MessageDialog("Invalid input.");
+            await error.ShowAsync();
+        }
         public async void Search()
         {
             if (TIC != "")
