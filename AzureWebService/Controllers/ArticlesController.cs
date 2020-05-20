@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.WebPages;
 using AzureWebService.DBAccess;
 using InventoryLibrary;
 
@@ -42,7 +43,7 @@ namespace AzureWebService.Controllers
         // POST: api/Articles
         public void Post([FromBody] Article article)
         {
-            if (Get(article.TIC).TIC != article.TIC && article.Location.Length == 6 && article.Quantity > 0 && article.Weight > 0 && article.TIC.Length == 4 && (article.IAN.Length == 8 || article.IAN.Length == 16))
+            if (Get(article.TIC).TIC != article.TIC && article.Location.Length == 6 && article.TIC.IsInt() && article.IAN.IsInt() && article.Quantity > 0 && article.Weight > 0 && article.TIC.Length == 4 && (article.IAN.Length == 8 || article.IAN.Length == 16))
             {
                 articleAccess.createArticle(article);
             }
