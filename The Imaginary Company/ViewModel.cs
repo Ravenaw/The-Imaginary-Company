@@ -66,7 +66,7 @@ namespace The_Imaginary_Company
         public string TIC { get; set; }
         public string IAN { get; set; }
         public string Name { get; set; }
-        public int Weight { get; set; }
+        public double Weight { get; set; }
         public int Quantity { get; set; }
         private string _loc;
         public string Location { get { return _loc; } set { _loc = value.Trim().ToUpper(); } }
