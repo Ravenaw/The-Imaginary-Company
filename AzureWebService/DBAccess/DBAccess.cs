@@ -30,7 +30,7 @@ namespace AzureWebService.DBAccess
                         Owner = reader.GetString(2),
                         Name = reader.GetString(3),
                         Quantity = reader.GetInt32(4),
-                        Weight = reader.GetInt32(5),
+                        Weight = reader.GetDouble(5),
                         Location = reader.GetString(6)
                     };
 
@@ -57,7 +57,7 @@ namespace AzureWebService.DBAccess
                     returnArticle.Owner = reader.GetString(2);
                     returnArticle.Name = reader.GetString(3);
                     returnArticle.Quantity = reader.GetInt32(4);
-                    returnArticle.Weight = reader.GetInt32(5);
+                    returnArticle.Weight = reader.GetDouble(5);
                     returnArticle.Location = reader.GetString(6);
                 }
                 return returnArticle;
@@ -81,7 +81,7 @@ namespace AzureWebService.DBAccess
                     returnArticle.Owner = reader.GetString(2);
                     returnArticle.Name = reader.GetString(3);
                     returnArticle.Quantity = reader.GetInt32(4);
-                    returnArticle.Weight = reader.GetInt32(5);
+                    returnArticle.Weight = reader.GetDouble(5);
                     returnArticle.Location = reader.GetString(6);
                 }
                 return returnArticle;
@@ -105,7 +105,7 @@ namespace AzureWebService.DBAccess
                     returnArticle.Owner = reader.GetString(2);
                     returnArticle.Name = reader.GetString(3);
                     returnArticle.Quantity = reader.GetInt32(4);
-                    returnArticle.Weight = reader.GetInt32(5);
+                    returnArticle.Weight = reader.GetDouble(5);
                     returnArticle.Location = reader.GetString(6);
                 }
                 return returnArticle;
