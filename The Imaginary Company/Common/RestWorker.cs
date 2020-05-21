@@ -14,7 +14,7 @@ namespace The_Imaginary_Company.Common
     class RestWorker
     {
         string serverurl = "https://ticweb.azurewebsites.net";
-       
+
         public async Task<ObservableCollection<Article>> GetArticlesAsync()
         {
 
@@ -30,7 +30,7 @@ namespace The_Imaginary_Company.Common
         public async Task<Article> GetArticleAsync(string TIC)
         {
 
-            string url = serverurl + "/api/Articles/" +TIC;
+            string url = serverurl + "/api/Articles/" + TIC;
             using (HttpClient client = new HttpClient())
             {
                 string response = await client.GetStringAsync(url);
