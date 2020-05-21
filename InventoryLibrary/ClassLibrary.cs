@@ -12,7 +12,7 @@ namespace InventoryLibrary
         {
 
         }
-        public Article(string tic, string ian, string owner, int quantity, int weight, string location, string name)
+        public Article(string tic, string ian, string owner, int quantity, double weight, string location, string name)
         {
             TIC = tic;
             IAN = ian;
