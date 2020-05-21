@@ -44,8 +44,8 @@
                         <TextBox Height ="35" Text="{Binding IAN, Mode=TwoWay}" PlaceholderText="8 or 16 digits (EAN-8 / EAN-16)"></TextBox>
                         <TextBox Height ="35" Text="{Binding Owner, Mode=TwoWay}" PlaceholderText="Maximum 50 characters"></TextBox>
                         <TextBox Height ="35" Text="{Binding Name, Mode=TwoWay}" PlaceholderText="Maximum 50 characters"></TextBox>
-                        <TextBox Height ="35" Text="{Binding Weight, Mode=TwoWay}" PlaceholderText="Decimal number / Greater than 0"></TextBox>
-                        <TextBox Height ="35" Text="{Binding Quantity, Mode=TwoWay}" PlaceholderText="Even number / Greater than 0.0"></TextBox>
+                        <TextBox Height ="35" Text="{Binding Weight, Mode=TwoWay}" PlaceholderText="Decimal number / Greater than 0.0"></TextBox>
+                        <TextBox Height ="35" Text="{Binding Quantity, Mode=TwoWay}" PlaceholderText="Even number / Greater than 0"></TextBox>
                         <TextBox Height ="35" Text="{Binding Location, Mode=TwoWay}" PlaceholderText="6 digits (RRCCSS)"></TextBox>
                         <Button Content="Add" Command="{Binding AddArticleCommand}" HorizontalAlignment="Right" Width="50"></Button>
                     </StackPanel>
