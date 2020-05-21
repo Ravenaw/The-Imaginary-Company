@@ -99,7 +99,12 @@ namespace The_Imaginary_Company
         }
         public async void AddError()
         {
-            MessageDialog error = new MessageDialog("Invalid input.");
+            ContentDialog error = new ContentDialog()
+            {
+                Title = "Error",
+                Content = "Invalid input.",
+                CloseButtonText = "OK"
+            };
             await error.ShowAsync();
         }
         public async void Search()
