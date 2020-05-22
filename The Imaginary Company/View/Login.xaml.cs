@@ -23,7 +23,7 @@ namespace The_Imaginary_Company
     /// </summary>
     public sealed partial class Login : Page
     {
-        
+
         public Login()
         {
             this.InitializeComponent();
@@ -34,8 +34,19 @@ namespace The_Imaginary_Company
             string u = username.Text;
             string p = password.Password;
             ViewModel.Instance.VMSetUser(u, p);
-            //if(ViewModel.Instance.VMCheckPassword())
-            this.Frame.Navigate(typeof(Menu), e);
+            if (ViewModel.Instance.VMCheckPassword())
+            {
+                this.Frame.Navigate(typeof(Menu), e);
+            }
+            else
+            {
+                ContentDialog loginError = new ContentDialog()
+                {
+                    Title = "Error",
+                    Content = "Invalid username or password.",
+                    CloseButtonText = "OK"
+                };
+            }
         }
     }
 }
