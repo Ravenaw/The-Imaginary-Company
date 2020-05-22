@@ -43,7 +43,7 @@ namespace AzureWebService.Controllers
         // POST: api/Articles
         public void Post([FromBody] Article article)
         {
-            if (Get(article.TIC).TIC != article.TIC && article.Location.Length == 6 && article.TIC.IsInt() && article.IAN.IsInt() && article.Quantity > 0 && article.Weight > 0 && article.TIC.Length == 4 && (article.IAN.Length == 8 || article.IAN.Length == 16))
+            if (Get(article.TIC).TIC != article.TIC && article.Location.Length == 6 && article.TIC.IsInt() && article.isIANnumeric() && article.Quantity > 0 && article.Weight > 0 && article.TIC.Length == 4 && (article.IAN.Length == 8 || article.IAN.Length == 16))
             {
                 articleAccess.createArticle(article);
             }
@@ -52,7 +52,7 @@ namespace AzureWebService.Controllers
         // PUT: api/Articles/5
         public void Put(string id, [FromBody] Article article)
         {
-            if (article.Location.Length == 6 && article.IAN.IsInt() && article.Weight > 0 && (article.IAN.Length == 8 || article.IAN.Length == 16))
+            if (article.Location.Length == 6 && article.isIANnumeric() && article.Weight > 0 && (article.IAN.Length == 8 || article.IAN.Length == 16))
             {
                 articleAccess.updateArticle(id, article);
             }
