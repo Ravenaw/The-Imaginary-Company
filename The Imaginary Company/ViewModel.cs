@@ -97,16 +97,7 @@ namespace The_Imaginary_Company
             }
 
         }
-        public async void InputError()
-        {
-            ContentDialog error = new ContentDialog()
-            {
-                Title = "Error",
-                Content = "Invalid input.",
-                CloseButtonText = "OK"
-            };
-            await error.ShowAsync();
-        }
+       
         public async void Search()
         {
             try
@@ -123,9 +114,15 @@ namespace The_Imaginary_Company
                             SearchResult = await Worker.GetArticleByLocationAsync(Location);
                     }
                 }
-
-                Navigate(typeof(Details));
-                OnPropertyChanged("SearchResult");
+                if (SearchResult.Weight == 0)
+                {
+                    NoResultsError();
+                }
+                else
+                {
+                    Navigate(typeof(Details));
+                    OnPropertyChanged("SearchResult");
+                }
             }
             catch (Newtonsoft.Json.JsonSerializationException e)
             {
@@ -210,6 +207,28 @@ namespace The_Imaginary_Company
                 CloseButtonText = "OK"
             };
             await loginError.ShowAsync();
+        }
+
+        public async void InputError()
+        {
+            ContentDialog error = new ContentDialog()
+            {
+                Title = "Error",
+                Content = "Invalid input.",
+                CloseButtonText = "OK"
+            };
+            await error.ShowAsync();
+        }
+
+        public async void NoResultsError()
+        {
+            ContentDialog error = new ContentDialog()
+            {
+                Title = "Not found",
+                Content = "404 - No article found",
+                CloseButtonText = "OK"
+            };
+            await error.ShowAsync();
         }
         //what is this?
         //public ObservableCollection<Article> ArticleCollection => AllArticles.Articles;
