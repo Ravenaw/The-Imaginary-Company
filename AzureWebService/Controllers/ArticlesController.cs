@@ -52,7 +52,10 @@ namespace AzureWebService.Controllers
         // PUT: api/Articles/5
         public void Put(string id, [FromBody] Article article)
         {
-            articleAccess.updateArticle(id, article);
+            if (article.Location.Length == 6 && article.IAN.IsInt() && article.Weight > 0 && (article.IAN.Length == 8 || article.IAN.Length == 16))
+            {
+                articleAccess.updateArticle(id, article);
+            }
         }
 
         // DELETE: api/Articles/5
