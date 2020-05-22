@@ -39,7 +39,7 @@
                 </Grid>
                 <Grid>
                     <StackPanel Width="200" Spacing="20">
-                        <TextBox Height ="35" Text="{Binding TIC, Mode=TwoWay}"></TextBox>
+                        <TextBox Height ="35" Text="{Binding TIC, Mode=TwoWay}" IsReadOnly="True"></TextBox>
                         <TextBox Height ="35" Text="{Binding IAN, Mode=TwoWay}"></TextBox>
                         <TextBox Height ="35" Text="{Binding Owner, Mode=TwoWay}"></TextBox>
                         <TextBox Height ="35" Text="{Binding Name, Mode=TwoWay}"></TextBox>

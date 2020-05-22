@@ -162,11 +162,19 @@ namespace The_Imaginary_Company
             Temp = SearchResult;
             Navigate(typeof(EditItem));
         }
+
         public void Edit()
         {
-            Worker.UpdateArticle(Temp.TIC, SearchResult);
-            //UpdateDb();
-            Navigate(typeof(Details));
+            if (SearchResult.IAN.IsNumeric() && SearchResult.Weight > 0 && (SearchResult.IAN.Length == 8 || SearchResult.IAN.Length == 16) && SearchResult.Location.Length == 6)
+            {
+                Worker.UpdateArticle(Temp.TIC, SearchResult);
+                //UpdateDb();
+                Navigate(typeof(Details));
+            }
+            else
+            {
+                AddError();
+            }
         }
 
         public void CancelOnEdit()
