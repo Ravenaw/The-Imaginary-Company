@@ -40,12 +40,7 @@ namespace The_Imaginary_Company
             }
             else
             {
-                ContentDialog loginError = new ContentDialog()
-                {
-                    Title = "Error",
-                    Content = "Invalid username or password.",
-                    CloseButtonText = "OK"
-                };
+                ViewModel.Instance.loginError();
             }
         }
     }

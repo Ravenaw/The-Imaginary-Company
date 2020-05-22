@@ -190,6 +190,16 @@ namespace The_Imaginary_Company
             return CurrentUser.ValidUser();
         }
 
+        public async void loginError()
+        {
+            ContentDialog loginError = new ContentDialog()
+            {
+                Title = "Error",
+                Content = "Invalid username or password.",
+                CloseButtonText = "OK"
+            };
+            await loginError.ShowAsync();
+        }
         //what is this?
         //public ObservableCollection<Article> ArticleCollection => AllArticles.Articles;
 
