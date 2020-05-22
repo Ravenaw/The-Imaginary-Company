@@ -35,6 +35,23 @@ namespace InventoryLibrary
             return "";
         }
 
+        public bool isIANnumeric()
+        {
+            bool itIs = true;
+            foreach (char n in IAN)
+            {
+                if (n >= '0' && n <= '9')
+                {
+
+                }
+                else
+                {
+                    itIs = false;
+                }
+            }
+
+            return itIs;
+        }
     }
 
     public class ArticleCatalog

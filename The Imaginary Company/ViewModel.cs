@@ -85,7 +85,7 @@ namespace The_Imaginary_Company
         public void AddArticle()
         {
             Temp = new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name);
-            if (Temp.TIC.IsNumeric() && Temp.IAN.IsNumeric() && Temp.Quantity > 0 && Temp.Weight > 0 && (Temp.IAN.Length == 8 || Temp.IAN.Length == 16) && Temp.Location.Length == 6)
+            if (Temp.TIC.IsNumeric() && Temp.isIANnumeric() && Temp.Quantity > 0 && Temp.Weight > 0 && (Temp.IAN.Length == 8 || Temp.IAN.Length == 16) && Temp.Location.Length == 6)
             {
                 Worker.CreateArticle(Temp);
                 SearchResult = Temp;
@@ -127,7 +127,7 @@ namespace The_Imaginary_Company
                 Navigate(typeof(Details));
                 OnPropertyChanged("SearchResult");
             }
-            catch(Newtonsoft.Json.JsonSerializationException e)
+            catch (Newtonsoft.Json.JsonSerializationException e)
             {
                 InputError();
             }
