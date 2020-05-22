@@ -123,11 +123,18 @@ namespace InventoryLibrary
         }
         public bool ValidUser()
         {
-            if (UsersList.First(x => x.Username == this.Username && x.Password == this.Password) != null)
-            { return true; }
+            try
+            {
+                if (UsersList.First(x => x.Username == this.Username && x.Password == this.Password) != null)
+                { return true; }
 
-            else
+                else
+                    return false;
+            }
+            catch(System.InvalidOperationException e)
+            {
                 return false;
+            }
 
         }
         public override string ToString()
