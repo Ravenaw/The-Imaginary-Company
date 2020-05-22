@@ -93,11 +93,11 @@ namespace The_Imaginary_Company
             }
             else
             {
-                AddError();
+                InputError();
             }
 
         }
-        public async void AddError()
+        public async void InputError()
         {
             ContentDialog error = new ContentDialog()
             {
@@ -109,21 +109,28 @@ namespace The_Imaginary_Company
         }
         public async void Search()
         {
-            if (TIC != "")
-                SearchResult = await Worker.GetArticleAsync(TIC);
-            else
+            try
             {
-                if (IAN != "")
-                    SearchResult = await Worker.GetArticleByIanAsync(IAN);
+                if (TIC != "")
+                    SearchResult = await Worker.GetArticleAsync(TIC);
                 else
                 {
-                    if (!Location.Equals(""))
-                        SearchResult = await Worker.GetArticleByLocationAsync(Location);
+                    if (IAN != "")
+                        SearchResult = await Worker.GetArticleByIanAsync(IAN);
+                    else
+                    {
+                        if (!Location.Equals(""))
+                            SearchResult = await Worker.GetArticleByLocationAsync(Location);
+                    }
                 }
-            }
 
-            Navigate(typeof(Details));
-            OnPropertyChanged("SearchResult");
+                Navigate(typeof(Details));
+                OnPropertyChanged("SearchResult");
+            }
+            catch(Newtonsoft.Json.JsonSerializationException e)
+            {
+                InputError();
+            }
         }
 
         public void Delete()
@@ -169,7 +176,7 @@ namespace The_Imaginary_Company
             }
             else
             {
-                AddError();
+                InputError();
             }
         }
 
