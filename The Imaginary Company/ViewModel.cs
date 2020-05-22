@@ -168,7 +168,7 @@ namespace The_Imaginary_Company
 
         public void Edit()
         {
-            if (SearchResult.IAN.IsNumeric() && SearchResult.Weight > 0 && (SearchResult.IAN.Length == 8 || SearchResult.IAN.Length == 16) && SearchResult.Location.Length == 6)
+            if (SearchResult.isIANnumeric() && SearchResult.Weight > 0 && (SearchResult.IAN.Length == 8 || SearchResult.IAN.Length == 16) && SearchResult.Location.Length == 6)
             {
                 Worker.UpdateArticle(Temp.TIC, SearchResult);
                 //UpdateDb();
