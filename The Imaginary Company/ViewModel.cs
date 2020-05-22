@@ -151,10 +151,6 @@ namespace The_Imaginary_Company
             {
                 Delete();
             }
-            else
-            {
-
-            }
         }
 
         public void GoToEdit()
