@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Threading.Tasks;
 using InventoryLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using The_Imaginary_Company;
@@ -14,10 +15,9 @@ namespace UnitTest
         {
             bool expectedresult = true;
 
-            User test = ViewModel.Instance.CurrentUser;
-            test.SetUser("Andrea", "124Dbu");
+            ViewModel.Instance.VMSetUser("Andrea", "124Dbu");
+            bool actualresult = ViewModel.Instance.VMCheckPassword();
 
-            bool actualresult = test.ValidUser();
             Assert.AreEqual(expectedresult, actualresult);
         }
         [TestMethod]
@@ -25,10 +25,9 @@ namespace UnitTest
         {
             bool expectedresult = true;
 
-            User test = ViewModel.Instance.CurrentUser;
-            test.SetUser("Andrea", "124D");
+            ViewModel.Instance.VMSetUser("Andrea", "aaaa");
+            bool actualresult = ViewModel.Instance.VMCheckPassword();
 
-            bool actualresult = test.ValidUser();
             Assert.AreNotEqual(expectedresult, actualresult);
         }
 
@@ -36,7 +35,8 @@ namespace UnitTest
         public void Search_ArticleSuccessful()
         {
             ViewModel.Instance.TIC = "4568";
-            ViewModel.Instance.Search();
+            Task.Run(()=>ViewModel.Instance.Search()).Wait();
+            
 
             Assert.AreEqual("78945612",ViewModel.Instance.SearchResult.IAN);
 
