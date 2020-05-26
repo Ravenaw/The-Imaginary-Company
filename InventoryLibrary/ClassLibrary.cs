@@ -123,7 +123,7 @@ namespace InventoryLibrary
         }
         public bool ValidUser()
         {
-            if (UsersList.First(x => x.Username == this.Username && x.Password == this.Password) != null)
+            if (UsersList.FirstOrDefault(x => x.Username == this.Username && x.Password == this.Password) != null)
             { return true; }
 
             else

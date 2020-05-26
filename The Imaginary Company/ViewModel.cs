@@ -47,7 +47,7 @@ namespace The_Imaginary_Company
             internal static readonly ViewModel instance = new ViewModel();
         }
         private RestWorker Worker = new RestWorker();
-        private User CurrentUser = new User();
+        public User CurrentUser = new User();
         public ArticleCatalog AllArticles = new ArticleCatalog();
         //public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
 
