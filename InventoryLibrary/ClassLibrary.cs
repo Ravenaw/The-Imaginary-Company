@@ -35,6 +35,23 @@ namespace InventoryLibrary
             return "";
         }
 
+        public bool isIANnumeric()
+        {
+            bool itIs = true;
+            foreach (char n in IAN)
+            {
+                if (n >= '0' && n <= '9')
+                {
+
+                }
+                else
+                {
+                    itIs = false;
+                }
+            }
+
+            return itIs;
+        }
     }
 
     public class ArticleCatalog
@@ -123,11 +140,18 @@ namespace InventoryLibrary
         }
         public bool ValidUser()
         {
-            if (UsersList.FirstOrDefault(x => x.Username == this.Username && x.Password == this.Password) != null)
-            { return true; }
+            try
+            {
+                if (UsersList.First(x => x.Username == this.Username && x.Password == this.Password) != null)
+                { return true; }
 
-            else
+                else
+                    return false;
+            }
+            catch(System.InvalidOperationException e)
+            {
                 return false;
+            }
 
         }
         public override string ToString()

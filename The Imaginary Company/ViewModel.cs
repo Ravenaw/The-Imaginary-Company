@@ -85,7 +85,7 @@ namespace The_Imaginary_Company
         public void AddArticle()
         {
             Temp = new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name);
-            if (Temp.TIC.IsNumeric() && Temp.IAN.IsNumeric() && Temp.Quantity > 0 && Temp.Weight > 0 && (Temp.IAN.Length == 8 || Temp.IAN.Length == 16) && Temp.Location.Length == 6)
+            if (Temp.TIC.IsNumeric() && Temp.isIANnumeric() && Temp.Quantity > 0 && Temp.Weight > 0 && (Temp.IAN.Length == 8 || Temp.IAN.Length == 16) && Temp.Location.Length == 6)
             {
                 Worker.CreateArticle(Temp);
                 SearchResult = Temp;
@@ -93,37 +93,41 @@ namespace The_Imaginary_Company
             }
             else
             {
-                AddError();
+                InputError();
             }
 
         }
-        public async void AddError()
-        {
-            ContentDialog error = new ContentDialog()
-            {
-                Title = "Error",
-                Content = "Invalid input.",
-                CloseButtonText = "OK"
-            };
-            await error.ShowAsync();
-        }
+       
         public async void Search()
         {
-            if (TIC != "")
-                SearchResult = await Worker.GetArticleAsync(TIC);
-            else
+            try
             {
-                if (IAN != "")
-                    SearchResult = await Worker.GetArticleByIanAsync(IAN);
+                if (TIC != "")
+                    SearchResult = await Worker.GetArticleAsync(TIC);
                 else
                 {
-                    if (!Location.Equals(""))
-                        SearchResult = await Worker.GetArticleByLocationAsync(Location);
+                    if (IAN != "")
+                        SearchResult = await Worker.GetArticleByIanAsync(IAN);
+                    else
+                    {
+                        if (!Location.Equals(""))
+                            SearchResult = await Worker.GetArticleByLocationAsync(Location);
+                    }
+                }
+                if (SearchResult.Weight == 0)
+                {
+                    NoResultsError();
+                }
+                else
+                {
+                    Navigate(typeof(Details));
+                    OnPropertyChanged("SearchResult");
                 }
             }
-
-            Navigate(typeof(Details));
-            OnPropertyChanged("SearchResult");
+            catch (Newtonsoft.Json.JsonSerializationException e)
+            {
+                InputError();
+            }
         }
 
         public void Delete()
@@ -151,10 +155,6 @@ namespace The_Imaginary_Company
             {
                 Delete();
             }
-            else
-            {
-
-            }
         }
 
         public void GoToEdit()
@@ -162,11 +162,19 @@ namespace The_Imaginary_Company
             Temp = SearchResult;
             Navigate(typeof(EditItem));
         }
+
         public void Edit()
         {
-            Worker.UpdateArticle(Temp.TIC, SearchResult);
-            //UpdateDb();
-            Navigate(typeof(Details));
+            if (SearchResult.isIANnumeric() && SearchResult.Weight > 0 && (SearchResult.IAN.Length == 8 || SearchResult.IAN.Length == 16) && SearchResult.Location.Length == 6)
+            {
+                Worker.UpdateArticle(Temp.TIC, SearchResult);
+                //UpdateDb();
+                Navigate(typeof(Details));
+            }
+            else
+            {
+                InputError();
+            }
         }
 
         public void CancelOnEdit()
@@ -190,6 +198,38 @@ namespace The_Imaginary_Company
             return CurrentUser.ValidUser();
         }
 
+        public async void loginError()
+        {
+            ContentDialog loginError = new ContentDialog()
+            {
+                Title = "Error",
+                Content = "Invalid username or password.",
+                CloseButtonText = "OK"
+            };
+            await loginError.ShowAsync();
+        }
+
+        public async void InputError()
+        {
+            ContentDialog error = new ContentDialog()
+            {
+                Title = "Error",
+                Content = "Invalid input.",
+                CloseButtonText = "OK"
+            };
+            await error.ShowAsync();
+        }
+
+        public async void NoResultsError()
+        {
+            ContentDialog error = new ContentDialog()
+            {
+                Title = "Not found",
+                Content = "404 - No article found",
+                CloseButtonText = "OK"
+            };
+            await error.ShowAsync();
+        }
         //what is this?
         //public ObservableCollection<Article> ArticleCollection => AllArticles.Articles;
 
