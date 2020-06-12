@@ -38,15 +38,18 @@ namespace InventoryLibrary
         public bool isIANnumeric()
         {
             bool itIs = true;
-            foreach (char n in IAN)
+            if (IAN != null)
             {
-                if (n >= '0' && n <= '9')
+                foreach (char n in IAN)
                 {
+                    if (n >= '0' && n <= '9')
+                    {
 
-                }
-                else
-                {
-                    itIs = false;
+                    }
+                    else
+                    {
+                        itIs = false;
+                    }
                 }
             }
 
