@@ -164,7 +164,7 @@ namespace AzureWebService.DBAccess
         
         public ObservableCollection<User> GetAllUsers()
         {
-            string query = "select * from User";
+            string query = "select * from [User]";
             ObservableCollection<User> mylist = new ObservableCollection<User>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -173,16 +173,15 @@ namespace AzureWebService.DBAccess
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    User theUser = new User
+                    User theUser = new User()
                     {
                         Username = reader.GetString(0),
                         Password = reader.GetString(1),
-                        Name = reader.GetString(2),
-                        PhoneNo = reader.GetInt32(3),
-                        Email = reader.GetString(4),
-                        Address = reader.GetString(5)
+                        Name = reader.IsDBNull(2) ? "N/A" : reader.GetString(2),
+                        PhoneNo = reader.IsDBNull(3) ? 0 : reader.GetInt32(3),
+                        Email = reader.IsDBNull(4) ? "N/A" : reader.GetString(4),
+                        Address = reader.IsDBNull(5) ? "N/A" : reader.GetString(5)
                     };
-
                     mylist.Add(theUser);
                 }
                 return mylist;
