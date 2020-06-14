@@ -17,7 +17,8 @@ namespace AzureWebService.Controllers
             return userAccess.GetAllUsers();
         }
 
-        
+        [HttpGet]
+        [Route("api/User/{username}")]
         public User Get(string username)
         {
             return userAccess.GetUser(username);

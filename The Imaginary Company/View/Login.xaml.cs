@@ -31,10 +31,9 @@ namespace The_Imaginary_Company
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            string u = username.Text;
-            string p = password.Password;
-            ViewModel.Instance.VMSetUser(u, p);
-            if (ViewModel.Instance.VMCheckPassword())
+            
+            ViewModel.Instance.VMSetUser(username.Text, password.Password);
+            if (ViewModel.Instance.VMCheckPassword().Result)
             {
                 this.Frame.Navigate(typeof(Menu), e);
             }

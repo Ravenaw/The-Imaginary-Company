@@ -191,7 +191,7 @@ namespace AzureWebService.DBAccess
 
         public void createUser(User user)
         {
-            string query = "insert into User(Username, Password, Name, PhoneNo., Email, Address) values(@username, @password, @name, @phoneno, @email, @address)"; //query here...
+            string query = "insert into [User](Username, Password, Name, PhoneNo., Email, Address) values(@username, @password, @name, @phoneno, @email, @address)"; //query here...
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -209,7 +209,7 @@ namespace AzureWebService.DBAccess
         }
         public void deleteUser(string username)
         {
-            string query = "delete from User where Username=@username"; //query here...
+            string query = "delete from [User] where Username=@username"; //query here...
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -220,7 +220,7 @@ namespace AzureWebService.DBAccess
         }
         public User GetUser(string username)
         {
-            string query = "select * from User where Username=@username";
+            string query = "select * from [User] where Username=@username";
             User returnUser = new User();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -228,14 +228,18 @@ namespace AzureWebService.DBAccess
                 SqlCommand command = new SqlCommand(query, conn);
                 command.Parameters.AddWithValue("@username", username);
                 SqlDataReader reader = command.ExecuteReader();
+
                 while (reader.Read())
                 {
-                    returnUser.Username = reader.GetString(0);
-                    returnUser.Password = reader.GetString(1);
-                    returnUser.Name = reader.GetString(2);
-                    returnUser.PhoneNo = reader.GetInt32(4);
-                    returnUser.Email = reader.GetString(5);
-                    returnUser.Address = reader.GetString(6);
+                    returnUser = new User()
+                    {
+                        Username = reader.GetString(0),
+                        Password = reader.GetString(1),
+                        Name = reader.IsDBNull(2) ? "N/A" : reader.GetString(2),
+                        PhoneNo = reader.IsDBNull(3) ? 0 : reader.GetInt32(3),
+                        Email = reader.IsDBNull(4) ? "N/A" : reader.GetString(4),
+                        Address = reader.IsDBNull(5) ? "N/A" : reader.GetString(5)
+                    };
                 }
                 return returnUser;
             }
