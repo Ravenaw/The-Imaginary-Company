@@ -195,7 +195,12 @@ namespace The_Imaginary_Company
         //.........
         public bool VMCheckPassword()
         {
-            return CurrentUser.ValidUser();
+            User islogedin = Worker.GetUserAsync(CurrentUser.Username).Result;
+            if (CurrentUser.Password == islogedin.Password)
+            {
+                return true;
+            }
+            else return false;
         }
 
         public async void loginError()
