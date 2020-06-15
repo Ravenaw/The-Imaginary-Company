@@ -164,7 +164,7 @@ namespace AzureWebService.DBAccess
         
         public ObservableCollection<User> GetAllUsers()
         {
-            string query = "select * from [User]";
+            string query = "Select * From [User] where not Username='ticAdmin'";
             ObservableCollection<User> mylist = new ObservableCollection<User>();
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

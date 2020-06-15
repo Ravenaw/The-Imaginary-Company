@@ -26,8 +26,10 @@ namespace The_Imaginary_Company.View
         public UserCatalog()
         {
             this.InitializeComponent();
+            DataContext = ViewModel.Instance;
             ContactsListView.ItemsSource = ViewModel.Instance.UsersCollection;
             ContactsListView.SelectedItem = ViewModel.Instance.SelectedUser;
+            //Contacts.DataContext = ViewModel.Instance.SelectedUser;
         }
         private void ContactsListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
