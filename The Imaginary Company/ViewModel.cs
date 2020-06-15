@@ -227,9 +227,9 @@ namespace The_Imaginary_Company
             get { return Quantity.ToString("F1"); }
         }
         //.........
-        public bool VMCheckPassword()
+        public async Task<bool> VMCheckPassword()
         {
-            User islogedin = Worker.GetUserAsync(CurrentUser.Username);
+            User islogedin = await Worker.GetUserAsync(CurrentUser.Username);
             if (CurrentUser.Password == islogedin.Password)
             {
                 return true;

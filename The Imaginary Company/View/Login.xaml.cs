@@ -31,10 +31,11 @@ namespace The_Imaginary_Company
             this.InitializeComponent();
         }
 
-        private void Login_Click(object sender, RoutedEventArgs e)
+        private async void Login_Click(object sender, RoutedEventArgs e)
         {
+            yes();
             ViewModel.Instance.VMSetUser(username.Text, password.Password);
-            if (ViewModel.Instance.VMCheckPassword())
+            if (await ViewModel.Instance.VMCheckPassword())
             {
                 if (password.Password == "ticPassword1")
                 {
@@ -48,11 +49,16 @@ namespace The_Imaginary_Company
             }
         }
 
+        private void yes()
+        {
+            ProgressRinga.IsActive = true;
+        }
+
         private void Password_OnKeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Enter)
             {
-                ProgressRing.IsActive = true;
+                
                 Login_Click(sender, e);
             }
         }
