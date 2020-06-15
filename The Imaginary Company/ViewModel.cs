@@ -19,6 +19,7 @@ using Microsoft.Toolkit.Extensions;
 using Windows.UI.Popups;
 using System.ServiceModel.Channels;
 using System.Security.Cryptography.X509Certificates;
+using UserCatalog = InventoryLibrary.UserCatalog;
 
 namespace The_Imaginary_Company
 {
@@ -32,6 +33,7 @@ namespace The_Imaginary_Company
             GoToEditCommand = new RelayCommand(GoToEdit);
             EditArticleCommand = new RelayCommand(Edit);
             CancelOnEditCommand = new RelayCommand(CancelOnEdit);
+            _selectedUser = null;
             //UpdateDb();
         }
 
@@ -47,8 +49,21 @@ namespace The_Imaginary_Company
             internal static readonly ViewModel instance = new ViewModel();
         }
         private RestWorker Worker = new RestWorker();
-        private User CurrentUser = new User();
+        public User CurrentUser = new User();
         public ArticleCatalog AllArticles = new ArticleCatalog();
+        public UserCatalog AllUsers = new UserCatalog();
+        private User _selectedUser;
+        public User SelectedUser
+        {
+            get => _selectedUser;
+
+            set
+            {
+                _selectedUser = value;
+                OnPropertyChanged();
+                //_deletionCommand.RaiseCanExecuteChanged();
+            }
+        }
         //public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
 
         public ICommand SearchArticleCommand { get; set; }
@@ -74,8 +89,11 @@ namespace The_Imaginary_Company
         public async Task UpdateDb()
         {
             ObservableCollection<Article> temp = await Worker.GetArticlesAsync();
+            ObservableCollection<User> temp1 = await Worker.GetUsersAsync();
             AllArticles.Update(temp);
+            AllUsers.Update(temp1);
             OnPropertyChanged("AllArticles");
+            OnPropertyChanged("AllUsers");
         }
         public void VMSetUser(string u, string p)
         {
@@ -193,9 +211,9 @@ namespace The_Imaginary_Company
             get { return Quantity.ToString("F1"); }
         }
         //.........
-        public async Task<bool> VMCheckPassword()
+        public bool VMCheckPassword()
         {
-            User islogedin = await Worker.GetUserAsync(CurrentUser.Username);
+            User islogedin = Worker.GetUserAsync(CurrentUser.Username);
             if (CurrentUser.Password == islogedin.Password)
             {
                 return true;
@@ -237,6 +255,7 @@ namespace The_Imaginary_Company
         }
         //what is this?
         //public ObservableCollection<Article> ArticleCollection => AllArticles.Articles;
+        public ObservableCollection<User> UsersCollection => AllUsers.GetAll();
 
         public event PropertyChangedEventHandler PropertyChanged;
 

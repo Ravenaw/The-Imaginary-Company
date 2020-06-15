@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using The_Imaginary_Company.View;
 
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -33,9 +34,13 @@ namespace The_Imaginary_Company
         {
             
             ViewModel.Instance.VMSetUser(username.Text, password.Password);
-            if (ViewModel.Instance.VMCheckPassword().Result)
+            if (ViewModel.Instance.VMCheckPassword())
             {
-                this.Frame.Navigate(typeof(Menu), e);
+                if (password.Password=="ticPassword1")
+                {
+                    this.Frame.Navigate(typeof(MenuForAdmin), e);
+                }
+                else this.Frame.Navigate(typeof(Menu), e);
             }
             else
             {

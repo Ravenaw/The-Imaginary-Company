@@ -147,13 +147,13 @@ namespace The_Imaginary_Company.Common
                 }
             }
         }
-        public async Task<User> GetUserAsync(string username)
+        public User GetUserAsync(string username)
         {
 
             string url = serverurl + "/api/User/" + username;
             using (HttpClient client = new HttpClient())
             {
-                string response = await client.GetStringAsync(url);
+                string response =  client.GetStringAsync(url).Result;
                 User theUser = JsonConvert.DeserializeObject<User>(response);
                 return theUser;
             }
