@@ -32,11 +32,10 @@ namespace The_Imaginary_Company
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            
             ViewModel.Instance.VMSetUser(username.Text, password.Password);
             if (ViewModel.Instance.VMCheckPassword())
             {
-                if (password.Password=="ticPassword1")
+                if (password.Password == "ticPassword1")
                 {
                     this.Frame.Navigate(typeof(MenuForAdmin), e);
                 }
