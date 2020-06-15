@@ -10,41 +10,30 @@
 
     <Page.Resources>
         <Style x:Key="TextBlockStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="36" />
-            <Setter Property="Width" Value="300" />
-            <Setter Property="Margin" Value="20,20,20,20" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="Foreground" Value="White"/>
         </Style>
         <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="FontSize" Value="24" />
-            <Setter Property="Margin" Value="10,10,10,10" />
+            <Setter Property="FontSize" Value="18" />
         </Style>
     </Page.Resources>
     <Grid>
-        <StackPanel Margin="0,0,1149,0">
-            <ListView Name="ContactsListView" SelectionChanged="ContactsListView_OnSelectionChanged" >
+        <StackPanel Orientation="Horizontal">
+            <ListView x:Name="ContactsListView" SelectionChanged="ContactsListView_OnSelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Foreground="White" Margin="0,0,0,0" Text="{Binding Name}" FontWeight="Bold" FontSize="50"/>
+                        <StackPanel>
+                            <TextBlock Foreground="White" Text="{Binding Name}" FontWeight="Bold" FontSize="18"/>
                         </StackPanel>
 
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackPanel>
 
-        <StackPanel Margin="419,0,230,0" Orientation="Vertical" Name="Contacts" Visibility="Collapsed">
-            <StackPanel
-                Orientation="Horizontal" Height="457" Width="849">
-                <StackPanel Height="453" Width="307">
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.Name}" />
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.Username}" />
-                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.PhoneNo}" />
-                </StackPanel>
-
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="63">
+            <StackPanel x:Name="Contacts" Visibility="Collapsed">
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Name}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Username}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding PhoneNo}" />
                 <Button
                     Style="{StaticResource ButtonStyle}"
                     Margin="10"
@@ -52,7 +41,5 @@
                     Content="Delete" />
             </StackPanel>
         </StackPanel>
-
-
     </Grid>
 </Page>

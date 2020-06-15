@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using The_Imaginary_Company.Common;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,8 +26,8 @@ namespace The_Imaginary_Company.View
         public UserCatalog()
         {
             this.InitializeComponent();
-            this.ContactsListView.ItemsSource = ViewModel.Instance.UsersCollection;
-            this.ContactsListView.SelectedItem = ViewModel.Instance.SelectedUser;
+            ContactsListView.ItemsSource = ViewModel.Instance.UsersCollection;
+            ContactsListView.SelectedItem = ViewModel.Instance.SelectedUser;
         }
         private void ContactsListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
