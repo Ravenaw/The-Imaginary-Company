@@ -45,6 +45,7 @@ namespace The_Imaginary_Company
             }
             else
             {
+                Ring();
                 ViewModel.Instance.loginError();
             }
         }
