@@ -13,20 +13,29 @@ namespace The_Imaginary_Company.Common
 {
     class RestWorker
     {
+        //this is sends requests and data to the webservice, what functions from the webservice the server should run
         string serverurl = "https://ticweb.azurewebsites.net";
+        //async returns only tasks or void or Task<T>
+        //async is a method modifier (like e.g. public or static), indicating that the method contains code that can be run asynchronously.
+        //await is an operator, which specifies where code will be executed asyn-chronously.
 
         public async Task<ObservableCollection<Article>> GetArticlesAsync()
         {
 
             string url = serverurl + "/api/Articles";
+            //predifined httpclient object
+            // "using" is used to specify that the HttpClient is only used during the execution and will close when it's done
             using (HttpClient client = new HttpClient())
             {
+                //GetStringAsync is a predefined method that HttpClient has 
+                //because the method GetStringAsync is async, we need the await operator, and this is why we created the method async
+                //we could also use the GetStringAsync.Result, but it takes longer than using the async function
                 string response = await client.GetStringAsync(url);
                 ObservableCollection<Article> List = JsonConvert.DeserializeObject<ObservableCollection<Article>>(response);
                 return List;
             }
         }
-
+        //returning one article based on the TIC number
         public async Task<Article> GetArticleAsync(string TIC)
         {
 
@@ -38,7 +47,7 @@ namespace The_Imaginary_Company.Common
                 return theArticle;
             }
         }
-
+        //returning one article based on the IAN number
         public async Task<Article> GetArticleByIanAsync(string IAN)
         {
 
@@ -50,7 +59,7 @@ namespace The_Imaginary_Company.Common
                 return theArticle;
             }
         }
-
+        //returning one article based on the Location
         public async Task<Article> GetArticleByLocationAsync(string Loc)
         {
 
@@ -62,7 +71,7 @@ namespace The_Imaginary_Company.Common
                 return theArticle;
             }
         }
-
+        //create an article on the webservice
         public void CreateArticle(Article article)
         {
 
@@ -72,6 +81,7 @@ namespace The_Imaginary_Company.Common
             {
                 string data = JsonConvert.SerializeObject(article);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                //we use the .Result instead of the await because we want to receive an response from the webservice
                 HttpResponseMessage response = client.PostAsync(url, content).Result;
                 try
                 {
@@ -83,7 +93,7 @@ namespace The_Imaginary_Company.Common
                 }
             }
         }
-
+        //IMPORTANT POST: ADDING PUT: UPDATE
         public void UpdateArticle(string TIC, Article article)
         {
             string url = serverurl + "/api/Articles/" + TIC;

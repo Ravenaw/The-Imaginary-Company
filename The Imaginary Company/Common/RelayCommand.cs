@@ -7,6 +7,8 @@ using System.Windows.Input;
 
 namespace Exe2009.Common
 {
+    // the realycommand is used to bind methods to buttons and it also checks if it is possible, ex: you won't have an error if you try to delete a non-existing user. (the relaycommand creates an event)
+    //predifined class from 1 semester
     public class RelayCommand : ICommand
     {
         private readonly Action _execute;

@@ -24,12 +24,18 @@ namespace The_Imaginary_Company.View
     public sealed partial class UserCatalog : Page
     {
         public UserCatalog()
-        {
+
+        { // this comes predefined
             this.InitializeComponent();
+            //this is the binding for the hole page
             DataContext = ViewModel.Instance;
+            //this is the binding for the listview
             ContactsListView.ItemsSource = ViewModel.Instance.UsersCollection;
             ContactsListView.SelectedItem = ViewModel.Instance.SelectedUser;
+
         }
+
+        // tis is the method that makes the info for the user (the stack pannel) visible when you select an user from the listview
         private void ContactsListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ContactsListView.SelectedItem == null)
