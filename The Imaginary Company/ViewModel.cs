@@ -165,6 +165,9 @@ namespace The_Imaginary_Company
 
             SelectedUser = null;
         }
+
+        
+
         public async void DisplayDeleteItemDialog()
         {
             ContentDialog deleteFileDialog = new ContentDialog
