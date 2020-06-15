@@ -36,10 +36,9 @@ namespace UnitTest
         {
             ViewModel.Instance.TIC = "4568";
             Task.Run(()=>ViewModel.Instance.Search()).Wait();
-            
 
-            Assert.AreEqual("78945612",ViewModel.Instance.SearchResult.IAN);
 
+            Assert.AreEqual("78945612", ViewModel.Instance.SearchResult.IAN);
         }
     }
 }
