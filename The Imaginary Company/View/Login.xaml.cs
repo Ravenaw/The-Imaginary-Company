@@ -33,7 +33,7 @@ namespace The_Imaginary_Company
 
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
-            yes();
+            Ring();
             ViewModel.Instance.VMSetUser(username.Text, password.Password);
             if (await ViewModel.Instance.VMCheckPassword())
             {
@@ -49,9 +49,9 @@ namespace The_Imaginary_Company
             }
         }
 
-        private void yes()
+        private void Ring()
         {
-            ProgressRinga.IsActive = true;
+            ProgressRinga.IsActive = !ProgressRinga.IsActive;
         }
 
         private void Password_OnKeyDown(object sender, KeyRoutedEventArgs e)
