@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="The_Imaginary_Company.View.UserCatalog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:The_Imaginary_Company.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <Style x:Key="TextBlockStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ListView x:Name="ContactsListView" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" SelectionChanged="ContactsListView_OnSelectionChanged" Width="200">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Foreground="White" Text="{Binding Name, Mode=TwoWay}" FontWeight="Bold" FontSize="18"/>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackPanel x:Name="Contacts" Visibility="Collapsed" Width="200">
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.Name, Mode=TwoWay}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.Username, Mode=TwoWay}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.PhoneNo, Mode=TwoWay}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.Email, Mode=TwoWay}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.Address, Mode=TwoWay}" />
+                <Button
+                    Style="{StaticResource ButtonStyle}"
+                    Margin="10"
+                    Command="{Binding DeleteUserCommand}"
+                    Content="Delete" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

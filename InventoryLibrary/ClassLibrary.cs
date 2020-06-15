@@ -106,17 +106,18 @@ namespace InventoryLibrary
 
     public class User
     {
-        private string Username { get; set; }
-        private string Password { get; set; }
-        private string Name { get; set; }
-        private int PhoneNo { get; set; }
-        private string Email { get; set; }
-        private string Address { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public int PhoneNo { get; set; }
+        public string Email { get; set; }
+        public string Address { get; set; }
 
-        public User(string username, string password, int phoneno, string email, string address )
+        public User(string username, string password, string name, int phoneno, string email, string address )
         {
             Username = username;
             Password = password;
+            Name = name;
             PhoneNo = phoneno;
             Email = email;
             Address = address;
@@ -128,12 +129,12 @@ namespace InventoryLibrary
 
         public static List<User> UsersList = new List<User>()
         {
-            new User("Aukse", "124Bla", 246412, "aukse@blabla.dot", "Denmark"),
-            new User("Marcell", "0000", 89626, "marcell@blabla.dot", "Taastrup"),
-            new User("Alex", "yes", 5962524, "alex@blabla.dot", "Copenhagen"),
-            new User("David","124Blu", 5453152, "david@blabla.dot", "Roskilde"),
-            new User("Andrea", "124Dbu",1754612, "andreea@blabla.dot", "Roskilde"),
-            new User("ticAdmin","ticPassword1", 0, null, null)
+            new User("Aukse", "124Bla","Aukse Matulaite", 246412, "aukse@blabla.dot", "Denmark"),
+            new User("Marcell", "0000","Marcell Varga", 89626, "marcell@blabla.dot", "Taastrup"),
+            new User("Alex", "yes","Vlad Alexandru Faget", 5962524, "alex@blabla.dot", "Copenhagen"),
+            new User("David","124Blu","David Botond Ferencz", 5453152, "david@blabla.dot", "Roskilde"),
+            new User("Andrea", "124Dbu","Andreea Vasiliu",1754612, "andreea@blabla.dot", "Roskilde"),
+            new User("ticAdmin","ticPassword1",null, 0, null, null)
         };
 
         public void SetUser(string user, string pass)
@@ -159,8 +160,23 @@ namespace InventoryLibrary
         }
         public override string ToString()
         {
-            return $"Name: {Name}, Email: {Email}, Phone Number: {PhoneNo}";
+            return $"Name: {Name}, Email: {Email}, Phone Number: {PhoneNo}, Address:{Address}";
         }
 
+    }
+
+    public class UserCatalog
+    {
+        private static ObservableCollection<User> List = new ObservableCollection<User>() { };
+        public UserCatalog() {}
+        public ObservableCollection<User> GetAll()
+        {
+            return List;
+        }
+
+        public void Update(ObservableCollection<User> NewL)
+        {
+            List = NewL;
+        }
     }
 }

@@ -119,5 +119,73 @@ namespace The_Imaginary_Company.Common
                 }
             }
         }
+        public async Task<ObservableCollection<User>> GetUsersAsync()
+        {
+
+            string url = serverurl + "/api/User";
+            using (HttpClient client = new HttpClient())
+            {
+                string response = await client.GetStringAsync(url);
+                ObservableCollection<User> List = JsonConvert.DeserializeObject<ObservableCollection<User>>(response);
+                return List;
+            }
+        }
+        public void DeleteUser(string username)
+        {
+            string url = serverurl + "/api/User/" + username;
+
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = client.DeleteAsync(url).Result;
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        public User GetUserAsync(string username)
+        {
+
+            string url = serverurl + "/api/User/" + username;
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string response = client.GetStringAsync(url).Result;
+                    User theUser = JsonConvert.DeserializeObject<User>(response);
+                    return theUser;
+                }
+                catch (Exception ex)
+                {
+                    User bye = new User();
+                    Console.WriteLine(ex.Message);
+                    return bye;
+                }
+            }
+        }
+        public void CreateUser(User user)
+        {
+
+            string url = serverurl + "/api/User";
+
+            using (HttpClient client = new HttpClient())
+            {
+                string data = JsonConvert.SerializeObject(user);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = client.PostAsync(url, content).Result;
+                try
+                {
+                    response.EnsureSuccessStatusCode();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
     }
 }

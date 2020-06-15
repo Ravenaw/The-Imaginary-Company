@@ -161,5 +161,88 @@ namespace AzureWebService.DBAccess
                 int affectedRows = command.ExecuteNonQuery();
             }
         }
+        
+        public ObservableCollection<User> GetAllUsers()
+        {
+            string query = "Select * From [User] where not Username='ticAdmin'";
+            ObservableCollection<User> mylist = new ObservableCollection<User>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User theUser = new User()
+                    {
+                        Username = reader.GetString(0),
+                        Password = reader.GetString(1),
+                        Name = reader.IsDBNull(2) ? "N/A" : reader.GetString(2),
+                        PhoneNo = reader.IsDBNull(3) ? 0 : reader.GetInt32(3),
+                        Email = reader.IsDBNull(4) ? "N/A" : reader.GetString(4),
+                        Address = reader.IsDBNull(5) ? "N/A" : reader.GetString(5)
+                    };
+                    mylist.Add(theUser);
+                }
+                return mylist;
+            }
+
+        }
+
+        public void createUser(User user)
+        {
+            string query = "insert into [User](Username, Password, Name, PhoneNo., Email, Address) values(@username, @password, @name, @phoneno, @email, @address)"; //query here...
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@username", user.Username);
+                command.Parameters.AddWithValue("@password", user.Password);
+                command.Parameters.AddWithValue("@name", user.Name);
+                command.Parameters.AddWithValue("@phoneno", user.PhoneNo);
+                command.Parameters.AddWithValue("@email", user.Email);
+                command.Parameters.AddWithValue("@address", user.Address);
+                //parameters here...
+                int affectedRows = command.ExecuteNonQuery();
+            }
+        }
+        public void deleteUser(string username)
+        {
+            string query = "delete from [User] where Username=@username"; //query here...
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@username", username);
+                int affectedRows = command.ExecuteNonQuery();
+            }
+        }
+        public User GetUser(string username)
+        {
+            string query = "select * from [User] where Username=@username";
+            User returnUser = new User();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("@username", username);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    returnUser = new User()
+                    {
+                        Username = reader.GetString(0),
+                        Password = reader.GetString(1),
+                        Name = reader.IsDBNull(2) ? "N/A" : reader.GetString(2),
+                        PhoneNo = reader.IsDBNull(3) ? 0 : reader.GetInt32(3),
+                        Email = reader.IsDBNull(4) ? "N/A" : reader.GetString(4),
+                        Address = reader.IsDBNull(5) ? "N/A" : reader.GetString(5)
+                    };
+                }
+                return returnUser;
+            }
+        }
     }
 }

@@ -19,6 +19,7 @@ using Microsoft.Toolkit.Extensions;
 using Windows.UI.Popups;
 using System.ServiceModel.Channels;
 using System.Security.Cryptography.X509Certificates;
+using UserCatalog = InventoryLibrary.UserCatalog;
 
 namespace The_Imaginary_Company
 {
@@ -32,6 +33,8 @@ namespace The_Imaginary_Company
             GoToEditCommand = new RelayCommand(GoToEdit);
             EditArticleCommand = new RelayCommand(Edit);
             CancelOnEditCommand = new RelayCommand(CancelOnEdit);
+            DeleteUserCommand= new RelayCommand(DeleteUser);
+            _selectedUser = null;
             //UpdateDb();
         }
 
@@ -47,8 +50,21 @@ namespace The_Imaginary_Company
             internal static readonly ViewModel instance = new ViewModel();
         }
         private RestWorker Worker = new RestWorker();
-        private User CurrentUser = new User();
+        public User CurrentUser = new User();
         public ArticleCatalog AllArticles = new ArticleCatalog();
+        public UserCatalog AllUsers = new UserCatalog();
+        private User _selectedUser;
+        public User SelectedUser
+        {
+            get => _selectedUser;
+
+            set
+            {
+                _selectedUser = value;
+                OnPropertyChanged();
+                DeleteUserCommand.RaiseCanExecuteChanged();
+            }
+        }
         //public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
 
         public ICommand SearchArticleCommand { get; set; }
@@ -57,6 +73,7 @@ namespace The_Imaginary_Company
         public ICommand DeleteCommand { get; set; }
         public ICommand GoToEditCommand { get; set; }
         public ICommand CancelOnEditCommand { get; set; }
+        public RelayCommand DeleteUserCommand { get; set; }
 
         public Article SearchResult = new Article();
         public Article Temp = new Article();
@@ -74,8 +91,11 @@ namespace The_Imaginary_Company
         public async Task UpdateDb()
         {
             ObservableCollection<Article> temp = await Worker.GetArticlesAsync();
+            ObservableCollection<User> temp1 = await Worker.GetUsersAsync();
             AllArticles.Update(temp);
+            AllUsers.Update(temp1);
             OnPropertyChanged("AllArticles");
+            OnPropertyChanged("AllUsers");
         }
         public void VMSetUser(string u, string p)
         {
@@ -138,6 +158,15 @@ namespace The_Imaginary_Company
             SearchResult.Name += " - Deleted";
             Navigate(typeof(Details));
         }
+        public void DeleteUser()
+        {
+            Worker.DeleteUser(SelectedUser.Username);
+            NavigateForAdmin(typeof(View.UserCatalog));
+
+            SelectedUser = null;
+        }
+
+        
 
         public async void DisplayDeleteItemDialog()
         {
@@ -187,6 +216,11 @@ namespace The_Imaginary_Company
             var Page = (Frame)Window.Current.Content;
             (Page.Content as Menu).GoToPage(NewPage);
         }
+        public void NavigateForAdmin(Type NewPage)
+        {
+            var Page = (Frame)Window.Current.Content;
+            (Page.Content as MenuForAdmin).GoToPage(NewPage);
+        }
         //just for details page
         public string quantity
         {
@@ -195,7 +229,12 @@ namespace The_Imaginary_Company
         //.........
         public bool VMCheckPassword()
         {
-            return CurrentUser.ValidUser();
+            User islogedin = Worker.GetUserAsync(CurrentUser.Username);
+            if (CurrentUser.Password == islogedin.Password)
+            {
+                return true;
+            }
+            else return false;
         }
 
         public async void loginError()
@@ -232,6 +271,7 @@ namespace The_Imaginary_Company
         }
         //what is this?
         //public ObservableCollection<Article> ArticleCollection => AllArticles.Articles;
+        public ObservableCollection<User> UsersCollection => AllUsers.GetAll();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
