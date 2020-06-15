@@ -52,6 +52,7 @@ namespace The_Imaginary_Company
         {
             if (e.Key == VirtualKey.Enter)
             {
+                ProgressRing.IsActive = true;
                 Login_Click(sender, e);
             }
         }
