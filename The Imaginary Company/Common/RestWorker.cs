@@ -153,9 +153,18 @@ namespace The_Imaginary_Company.Common
             string url = serverurl + "/api/User/" + username;
             using (HttpClient client = new HttpClient())
             {
-                string response =  client.GetStringAsync(url).Result;
-                User theUser = JsonConvert.DeserializeObject<User>(response);
-                return theUser;
+                try
+                {
+                    string response = client.GetStringAsync(url).Result;
+                    User theUser = JsonConvert.DeserializeObject<User>(response);
+                    return theUser;
+                }
+                catch (Exception ex)
+                {
+                    User bye = new User();
+                    Console.WriteLine(ex.Message);
+                    return bye;
+                }
             }
         }
         public void CreateUser(User user)

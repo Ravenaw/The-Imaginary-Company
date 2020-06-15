@@ -33,6 +33,7 @@ namespace The_Imaginary_Company
             GoToEditCommand = new RelayCommand(GoToEdit);
             EditArticleCommand = new RelayCommand(Edit);
             CancelOnEditCommand = new RelayCommand(CancelOnEdit);
+            DeleteUserCommand= new RelayCommand(DeleteUser);
             _selectedUser = null;
             //UpdateDb();
         }
@@ -61,7 +62,7 @@ namespace The_Imaginary_Company
             {
                 _selectedUser = value;
                 OnPropertyChanged();
-                //_deletionCommand.RaiseCanExecuteChanged();
+                DeleteUserCommand.RaiseCanExecuteChanged();
             }
         }
         //public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
@@ -72,6 +73,7 @@ namespace The_Imaginary_Company
         public ICommand DeleteCommand { get; set; }
         public ICommand GoToEditCommand { get; set; }
         public ICommand CancelOnEditCommand { get; set; }
+        public RelayCommand DeleteUserCommand { get; set; }
 
         public Article SearchResult = new Article();
         public Article Temp = new Article();
@@ -156,7 +158,13 @@ namespace The_Imaginary_Company
             SearchResult.Name += " - Deleted";
             Navigate(typeof(Details));
         }
+        public void DeleteUser()
+        {
+            Worker.DeleteUser(SelectedUser.Username);
+            //UpdateDb();
 
+            SelectedUser = null;
+        }
         public async void DisplayDeleteItemDialog()
         {
             ContentDialog deleteFileDialog = new ContentDialog

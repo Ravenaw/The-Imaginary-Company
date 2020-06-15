@@ -39,7 +39,7 @@
                 <Button
                     Style="{StaticResource ButtonStyle}"
                     Margin="10"
-                    Command="{Binding DeletionCommand}"
+                    Command="{Binding DeleteUserCommand}"
                     Content="Delete" />
             </StackPanel>
         </StackPanel>

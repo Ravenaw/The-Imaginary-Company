@@ -32,7 +32,8 @@ namespace AzureWebService.Controllers
         }
 
 
-        // DELETE: api/User/username
+        [HttpDelete]
+        [Route("api/User/{username}")]
         public void Delete(string username)
         {
             userAccess.deleteUser(username);
