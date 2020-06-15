@@ -31,9 +31,9 @@
             </ListView>
 
             <StackPanel x:Name="Contacts" Visibility="Collapsed">
-                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Name}" />
-                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Username}" />
-                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding PhoneNo}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Name, Mode=TwoWay}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding Username, Mode=TwoWay}" />
+                <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding PhoneNo, Mode=TwoWay}" />
                 <Button
                     Style="{StaticResource ButtonStyle}"
                     Margin="10"

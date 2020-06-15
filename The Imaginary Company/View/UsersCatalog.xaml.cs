@@ -28,6 +28,7 @@ namespace The_Imaginary_Company.View
             this.InitializeComponent();
             ContactsListView.ItemsSource = ViewModel.Instance.UsersCollection;
             ContactsListView.SelectedItem = ViewModel.Instance.SelectedUser;
+            Contacts.DataContext = ContactsListView.SelectedItem;
         }
         private void ContactsListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -35,7 +36,7 @@ namespace The_Imaginary_Company.View
             {
                 Contacts.Visibility = Visibility.Collapsed;
             }
-            if (ContactsListView.SelectedItem != null)
+            else if (ContactsListView.SelectedItem != null)
             {
                 Contacts.Visibility = Visibility.Visible;
             }
