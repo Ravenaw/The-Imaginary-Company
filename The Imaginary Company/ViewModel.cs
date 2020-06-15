@@ -32,7 +32,6 @@ namespace The_Imaginary_Company
             GoToEditCommand = new RelayCommand(GoToEdit);
             EditArticleCommand = new RelayCommand(Edit);
             CancelOnEditCommand = new RelayCommand(CancelOnEdit);
-            //UpdateDb();
         }
 
         public static ViewModel Instance { get { return Nested.instance; } }
@@ -49,7 +48,6 @@ namespace The_Imaginary_Company
         private RestWorker Worker = new RestWorker();
         private User CurrentUser = new User();
         public ArticleCatalog AllArticles = new ArticleCatalog();
-        //public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
 
         public ICommand SearchArticleCommand { get; set; }
         public ICommand EditArticleCommand { get; set; }
@@ -133,8 +131,6 @@ namespace The_Imaginary_Company
         public void Delete()
         {
             Worker.DeleteArticle(SearchResult.TIC);
-            //UpdateDb();
-
             SearchResult.Name += " - Deleted";
             Navigate(typeof(Details));
         }
@@ -168,7 +164,6 @@ namespace The_Imaginary_Company
             if (SearchResult.isIANnumeric() && SearchResult.Weight > 0 && (SearchResult.IAN.Length == 8 || SearchResult.IAN.Length == 16) && SearchResult.Location.Length == 6)
             {
                 Worker.UpdateArticle(Temp.TIC, SearchResult);
-                //UpdateDb();
                 Navigate(typeof(Details));
             }
             else
@@ -187,12 +182,7 @@ namespace The_Imaginary_Company
             var Page = (Frame)Window.Current.Content;
             (Page.Content as Menu).GoToPage(NewPage);
         }
-        //just for details page
-        public string quantity
-        {
-            get { return Quantity.ToString("F1"); }
-        }
-        //.........
+       
         public bool VMCheckPassword()
         {
             return CurrentUser.ValidUser();
@@ -230,8 +220,6 @@ namespace The_Imaginary_Company
             };
             await error.ShowAsync();
         }
-        //what is this?
-        //public ObservableCollection<Article> ArticleCollection => AllArticles.Articles;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
