@@ -161,7 +161,7 @@ namespace The_Imaginary_Company
         public void DeleteUser()
         {
             Worker.DeleteUser(SelectedUser.Username);
-            //UpdateDb();
+            NavigateForAdmin(typeof(View.UserCatalog));
 
             SelectedUser = null;
         }
@@ -212,6 +212,11 @@ namespace The_Imaginary_Company
         {
             var Page = (Frame)Window.Current.Content;
             (Page.Content as Menu).GoToPage(NewPage);
+        }
+        public void NavigateForAdmin(Type NewPage)
+        {
+            var Page = (Frame)Window.Current.Content;
+            (Page.Content as MenuForAdmin).GoToPage(NewPage);
         }
         //just for details page
         public string quantity
