@@ -9,6 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <ProgressRing x:Name="ProgressRinga" Height="50" Width="50" IsActive="False"></ProgressRing>
         <StackPanel Spacing="20" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Viewbox Height="50">
                 <SymbolIcon Symbol="Contact"></SymbolIcon>

@@ -147,7 +147,7 @@ namespace The_Imaginary_Company.Common
                 }
             }
         }
-        public User GetUserAsync(string username)
+        public async Task<User> GetUserAsync(string username)
         {
 
             string url = serverurl + "/api/User/" + username;
@@ -155,7 +155,7 @@ namespace The_Imaginary_Company.Common
             {
                 try
                 {
-                    string response = client.GetStringAsync(url).Result;
+                    string response = await client.GetStringAsync(url);
                     User theUser = JsonConvert.DeserializeObject<User>(response);
                     return theUser;
                 }
