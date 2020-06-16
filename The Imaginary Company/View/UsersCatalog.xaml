@@ -29,8 +29,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <StackPanel x:Name="Contacts" Visibility="Collapsed" Width="200">
+            
+                <StackPanel x:Name="Contacts" Visibility="Collapsed" Width="200">
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.Name, Mode=TwoWay}" />
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.Username, Mode=TwoWay}" />
                 <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding SelectedUser.PhoneNo, Mode=TwoWay}" />
@@ -42,6 +42,7 @@
                     Command="{Binding DeleteUserCommand}"
                     Content="Delete" />
             </StackPanel>
+            <Button Content="Add" HorizontalAlignment="Right" Width="50" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Page>

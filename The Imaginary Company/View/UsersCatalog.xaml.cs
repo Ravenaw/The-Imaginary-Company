@@ -47,5 +47,10 @@ namespace The_Imaginary_Company.View
                 Contacts.Visibility = Visibility.Visible;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddUser));
+        }
     }
 }

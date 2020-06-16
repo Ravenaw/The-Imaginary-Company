@@ -26,8 +26,9 @@ namespace The_Imaginary_Company.View
         {
             this.InitializeComponent();
         }
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
+            await ViewModel.Instance.UpdateDb();
             Content.Navigate(typeof(Catalog), e);
         }
 

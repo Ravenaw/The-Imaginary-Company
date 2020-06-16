@@ -34,6 +34,7 @@ namespace The_Imaginary_Company
             EditArticleCommand = new RelayCommand(Edit);
             CancelOnEditCommand = new RelayCommand(CancelOnEdit);
             DeleteUserCommand= new RelayCommand(DeleteUser);
+            AddUserCommand=new RelayCommand(AddUser);
             _selectedUser = null;
             //UpdateDb();
         }
@@ -70,6 +71,7 @@ namespace The_Imaginary_Company
         public ICommand SearchArticleCommand { get; set; }
         public ICommand EditArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
+        public ICommand AddUserCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand GoToEditCommand { get; set; }
         public ICommand CancelOnEditCommand { get; set; }
@@ -77,6 +79,7 @@ namespace The_Imaginary_Company
 
         public Article SearchResult = new Article();
         public Article Temp = new Article();
+        public User Temp1 = new User();
 
 
 
@@ -85,13 +88,19 @@ namespace The_Imaginary_Company
         public string Name { get; set; }
         public double Weight { get; set; }
         public int Quantity { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Address { get; set; }
+        public int PhoneNo { get; set; }
+        public string Email { get; set; }
+        public string NameForUser { get; set; }
         private string _loc;
         public string Location { get { return _loc; } set { _loc = value.Trim().ToUpper(); } }
         public string Owner { get; set; }
         public async Task UpdateDb()
         {
             ObservableCollection<Article> temp = await Worker.GetArticlesAsync();
-            ObservableCollection<User> temp1 = await Worker.GetUsersAsync();
+            ObservableCollection<User> temp1 = await Worker.GetUsersAsync(); 
             AllArticles.Update(temp);
             AllUsers.Update(temp1);
             OnPropertyChanged("AllArticles");
@@ -117,7 +126,16 @@ namespace The_Imaginary_Company
             }
 
         }
-       
+        public void AddUser()
+        {
+            Temp1 = new User(Username,Password,NameForUser,PhoneNo,Email,Address);
+
+            Worker.CreateUser(Temp1);
+            _ = UpdateDb();
+            NavigateForAdmin(typeof(View.UserCatalog));
+
+        }
+
         public async void Search()
         {
             try
@@ -159,8 +177,8 @@ namespace The_Imaginary_Company
             Navigate(typeof(Details));
         }
         public void DeleteUser()
-        {
-            Worker.DeleteUser(SelectedUser.Username);
+        { 
+            Worker.DeleteUserAsync(SelectedUser.Username);
             NavigateForAdmin(typeof(View.UserCatalog));
 
             SelectedUser = null;
@@ -219,14 +237,10 @@ namespace The_Imaginary_Company
         public void NavigateForAdmin(Type NewPage)
         {
             var Page = (Frame)Window.Current.Content;
+            
             (Page.Content as MenuForAdmin).GoToPage(NewPage);
         }
-        //just for details page
-        public string quantity
-        {
-            get { return Quantity.ToString("F1"); }
-        }
-        //.........
+        
         public async Task<bool> VMCheckPassword()
         {
             User islogedin = await Worker.GetUserAsync(CurrentUser.Username);

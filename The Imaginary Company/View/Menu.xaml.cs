@@ -28,9 +28,10 @@ namespace The_Imaginary_Company
             this.InitializeComponent();           
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-           Content.Navigate(typeof(Catalog), e);
+            await ViewModel.Instance.UpdateDb();
+            Content.Navigate(typeof(Catalog), e);
         }
 
         public void GoToPage(Type page)
