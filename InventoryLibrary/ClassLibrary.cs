@@ -8,12 +8,15 @@ namespace InventoryLibrary
 {
     public class Article
     {
+        //create an empty article for future implementation (or to work with it without parametres) 
         public Article()
         {
 
         }
+        //create an article with parametres
         public Article(string tic, string ian, string owner, int quantity, double weight, string location, string name)
         {
+            //assigning value to the parameter
             TIC = tic;
             IAN = ian;
             Owner = owner;
@@ -22,6 +25,7 @@ namespace InventoryLibrary
             Location = location;
             Name = name;
         }
+        //declatation of the parameters
         public string TIC { get; set; }
         public string IAN { get; set; }
         public string Name { get; set; }
@@ -32,9 +36,9 @@ namespace InventoryLibrary
 
         public override string ToString()
         {
-            return "";
+            return $"TIC:{TIC}, IAN: {IAN}, Owner: {Owner}, Quantity: {Quantity}, Weight: {Weight}, Location: {Location} ";
         }
-
+        //only numbers
         public bool isIANnumeric()
         {
             bool itIs = true;
@@ -59,23 +63,24 @@ namespace InventoryLibrary
 
     public class ArticleCatalog
     {
+        //sget info from database as alist of articles
         private static ObservableCollection<Article> List = new ObservableCollection<Article>()
         {};
 
         public ArticleCatalog()
         {
         }
-
+        //used to get all the articles from the list
         public ObservableCollection<Article> GetAll()
         {
             return List;
         }
-
+        //used to update the list in case we delete, edit or add an article on the server
         public void Update(ObservableCollection<Article> NewL)
         {
             List = NewL;
         }
-
+        /*
         public void AddToList(Article NewArt)
         {
             List.Add(NewArt);
@@ -101,6 +106,7 @@ namespace InventoryLibrary
 
         //what is this for? is it important?
         //public ObservableCollection<Article> Articles => List;
+        */
     }
 
 
@@ -126,38 +132,13 @@ namespace InventoryLibrary
         public User()
         {
         }
-
-        public static List<User> UsersList = new List<User>()
-        {
-            new User("Aukse", "124Bla","Aukse Matulaite", 246412, "aukse@blabla.dot", "Denmark"),
-            new User("Marcell", "0000","Marcell Varga", 89626, "marcell@blabla.dot", "Taastrup"),
-            new User("Alex", "yes","Vlad Alexandru Faget", 5962524, "alex@blabla.dot", "Copenhagen"),
-            new User("David","124Blu","David Botond Ferencz", 5453152, "david@blabla.dot", "Roskilde"),
-            new User("Andrea", "124Dbu","Andreea Vasiliu",1754612, "andreea@blabla.dot", "Roskilde"),
-            new User("ticAdmin","ticPassword1",null, 0, null, null)
-        };
-
+        //sets the valuse: the username and password for the current user, the one that you created when you typed the credentials in the view
         public void SetUser(string user, string pass)
         {
             Username = user;
             Password = pass;
         }
-        public bool ValidUser()
-        {
-            try
-            {
-                if (UsersList.First(x => x.Username == this.Username && x.Password == this.Password) != null)
-                { return true; }
-
-                else
-                    return false;
-            }
-            catch(System.InvalidOperationException e)
-            {
-                return false;
-            }
-
-        }
+       
         public override string ToString()
         {
             return $"Name: {Name}, Email: {Email}, Phone Number: {PhoneNo}, Address:{Address}";
