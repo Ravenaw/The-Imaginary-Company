@@ -20,12 +20,14 @@ using Windows.UI.Popups;
 using System.ServiceModel.Channels;
 using System.Security.Cryptography.X509Certificates;
 
+//namespace az a cucc amivel latjak egymast a classok
 namespace The_Imaginary_Company
 {
     public class ViewModel : INotifyPropertyChanged
     {
         public ViewModel()
         {
+            //a VIEW ezeket a parancsokat hivja meg
             AddArticleCommand = new RelayCommand(AddArticle);
             SearchArticleCommand = new RelayCommand(Search);
             DeleteCommand = new RelayCommand(DisplayDeleteItemDialog);
@@ -46,11 +48,14 @@ namespace The_Imaginary_Company
 
             internal static readonly ViewModel instance = new ViewModel();
         }
+        //A restworker az a class amelyik kommunikal a AZURE-el
         private RestWorker Worker = new RestWorker();
         private User CurrentUser = new User();
         public ArticleCatalog AllArticles = new ArticleCatalog();
+        //ez az a cucc ami nem kene itt legyen hanem a constructorban a PUBLIC VIEWMODELBEN 
         //public ObservableCollection<Article> AllArticles { get { return justcatalog.GetAll(); } }
 
+        //Itt jonnek letre a commmandok amiket a gombok hivnak meg a VIEW-bol 
         public ICommand SearchArticleCommand { get; set; }
         public ICommand EditArticleCommand { get; set; }
         public ICommand AddArticleCommand { get; set; }
@@ -58,10 +63,11 @@ namespace The_Imaginary_Company
         public ICommand GoToEditCommand { get; set; }
         public ICommand CancelOnEditCommand { get; set; }
 
+        //ez keres az ARTICLET
         public Article SearchResult = new Article();
         public Article Temp = new Article();
 
-
+        //A talalatot lecsereli a TEMP Articlere amit editalsz es visszakuldi az adatbazisba 
 
         public string TIC { get; set; }
         public string IAN { get; set; }
@@ -71,17 +77,21 @@ namespace The_Imaginary_Company
         private string _loc;
         public string Location { get { return _loc; } set { _loc = value.Trim().ToUpper(); } }
         public string Owner { get; set; }
+      
+        //Lekeri az adatbazist, eltarolja es kicsereli az ujra
         public async Task UpdateDb()
         {
             ObservableCollection<Article> temp = await Worker.GetArticlesAsync();
             AllArticles.Update(temp);
             OnPropertyChanged("AllArticles");
         }
+        //Ezt hivja meg a VIEW
         public void VMSetUser(string u, string p)
         {
             CurrentUser.SetUser(u, p);
         }
 
+        //
         public void AddArticle()
         {
             Temp = new Article(TIC, IAN, Owner, Quantity, Weight, Location, Name);
@@ -100,6 +110,7 @@ namespace The_Imaginary_Company
        
         public async void Search()
         {
+            //ha nincs condition akkor TRY-CATCH-t az if else helyett
             try
             {
                 if (TIC != "")
@@ -181,7 +192,7 @@ namespace The_Imaginary_Company
         {
             Navigate(typeof(Details));
         }
-
+        //
         public void Navigate(Type NewPage)
         {
             var Page = (Frame)Window.Current.Content;
@@ -192,7 +203,7 @@ namespace The_Imaginary_Company
         {
             get { return Quantity.ToString("F1"); }
         }
-        //.........
+        //amikor rakattintasz a LOGIN-re akkor ezt hivja meg maga a gomb
         public bool VMCheckPassword()
         {
             return CurrentUser.ValidUser();

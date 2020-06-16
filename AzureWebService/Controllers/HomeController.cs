@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+//Created by default
 namespace AzureWebService.Controllers
 {
     public class HomeController : Controller

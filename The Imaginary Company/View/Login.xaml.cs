@@ -31,8 +31,10 @@ namespace The_Imaginary_Company
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            //username egy sima textbox a password egy password box 
             string u = username.Text;
             string p = password.Password;
+            //A viewmodel egy SINGLETON 
             ViewModel.Instance.VMSetUser(u, p);
             if (ViewModel.Instance.VMCheckPassword())
             {

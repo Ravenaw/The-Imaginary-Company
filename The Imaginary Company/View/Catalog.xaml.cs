@@ -25,6 +25,9 @@ namespace The_Imaginary_Company.View
         public Catalog()
         {
             this.InitializeComponent();
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
             dataGrid.ItemsSource = ViewModel.Instance.AllArticles.GetAll();
         }
     }

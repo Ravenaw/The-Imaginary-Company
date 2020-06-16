@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 
 namespace The_Imaginary_Company.Common
 {
+    //Restworker kommunikal a WEbserviceszel es viewmodellel
     class RestWorker
     {
         string serverurl = "https://ticweb.azurewebsites.net";

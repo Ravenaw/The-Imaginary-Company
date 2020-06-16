@@ -7,6 +7,8 @@ using System.Web.Http;
 
 namespace AzureWebService.Controllers
 {
+    //UNused Created by Visual studio when we have a webservice
+
     public class ValuesController : ApiController
     {
         // GET api/values
