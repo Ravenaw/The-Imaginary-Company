@@ -9,7 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ProgressRing x:Name="ProgressRinga" Height="50" Width="50" IsActive="False"></ProgressRing>
         <StackPanel Spacing="20" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Viewbox Height="50">
                 <SymbolIcon Symbol="Contact"></SymbolIcon>
@@ -17,6 +16,7 @@
             <TextBox x:Name="username" HorizontalAlignment="Center" PlaceholderText="Username" Width="200"/>
             <PasswordBox x:Name="password" HorizontalAlignment="Center" KeyDown="Password_OnKeyDown" PlaceholderText="Password" Width="200"/>
             <Button x:Name="login" Content="Log In" HorizontalAlignment="Center" Click="Login_Click" Width="100"/>
+            <ProgressRing x:Name="ProgressRinga" Height="50" Width="50" IsActive="False"></ProgressRing>
         </StackPanel>
     </Grid>
 </Page>
