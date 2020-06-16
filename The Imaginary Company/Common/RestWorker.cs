@@ -130,13 +130,13 @@ namespace The_Imaginary_Company.Common
                 return List;
             }
         }
-        public void DeleteUser(string username)
+        public async void DeleteUserAsync(string username)
         {
             string url = serverurl + "/api/User/" + username;
 
             using (HttpClient client = new HttpClient())
             {
-                HttpResponseMessage response = client.DeleteAsync(url).Result;
+                HttpResponseMessage response = await client.DeleteAsync(url);
                 try
                 {
                     response.EnsureSuccessStatusCode();

@@ -191,7 +191,7 @@ namespace AzureWebService.DBAccess
 
         public void createUser(User user)
         {
-            string query = "insert into [User](Username, Password, Name, PhoneNo., Email, Address) values(@username, @password, @name, @phoneno, @email, @address)"; //query here...
+            string query = "insert into [User](Username, Password, Name, [PhoneNo.], Email, Address) values(@username, @password, @name, @phoneno, @email, @address)"; //query here...
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {

@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="The_Imaginary_Company.View.AddUser"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:The_Imaginary_Company.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Spacing="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Text="Add User" FontSize="72"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Grid Padding="0,0,5,0">
+                    <StackPanel Spacing="20">
+                        <Grid Height ="35">
+                            <TextBlock Text="Username" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="Password" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="Name" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="Address" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="PhoneNo." VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <Grid Height ="35">
+                            <TextBlock Text="Email" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+                <Grid>
+                    <StackPanel Width="250" Spacing="20">
+                        <TextBox Height ="35" Text="{Binding Username, Mode=TwoWay}"/>
+                        <PasswordBox Height ="35" Password="{Binding Password, Mode=TwoWay}" />
+                        <TextBox Height ="35" Text="{Binding NameForUser, Mode=TwoWay}" />
+                        <TextBox Height ="35" Text="{Binding Address, Mode=TwoWay}" />
+                        <TextBox Height ="35" Text="{Binding PhoneNo, Mode=TwoWay}" />
+                        <TextBox Height ="35" Text="{Binding Email, Mode=TwoWay}" />
+                        <Button Content="Add" Command="{Binding AddUserCommand}" HorizontalAlignment="Right" Width="50"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
