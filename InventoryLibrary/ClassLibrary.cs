@@ -4,16 +4,22 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
+//its not inside the Imaginary Company Because its easier to reference
+//in here we made 3 classes Artice, ArticleCatalog, User
+//it holds all of our classes
 namespace InventoryLibrary
 {
     public class Article
     {
         //create an empty article for future implementation (or to work with it without parametres) 
+        //this way we can create an article without properties (empty article with no data)
         public Article()
         {
 
         }
         //create an article with parametres
+        //this is a method that has the different types of data(parameters) for an article 
+        //in order to create an article all fields must be filled by the parameters
         public Article(string tic, string ian, string owner, int quantity, double weight, string location, string name)
         {
             //assigning value to the parameter
@@ -34,11 +40,13 @@ namespace InventoryLibrary
         public double Weight { get; set; }
         public string Location { get; set; }
 
+
+        //Coverts different data types(string,int etc) to readable text (objects) 
         public override string ToString()
         {
             return $"TIC:{TIC}, IAN: {IAN}, Owner: {Owner}, Quantity: {Quantity}, Weight: {Weight}, Location: {Location} ";
         }
-        //only numbers
+        //only numbers - method to ensure that only numbers can be given as a value to the ian number
         public bool isIANnumeric()
         {
             bool itIs = true;

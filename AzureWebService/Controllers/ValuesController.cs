@@ -5,6 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
+//this is an unused class created automatically by visual studio when we have a webservice
+
 namespace AzureWebService.Controllers
 {
     public class ValuesController : ApiController

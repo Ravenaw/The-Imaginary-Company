@@ -6,12 +6,17 @@ using System.Data.SqlClient;
 using InventoryLibrary;
 using System.Collections.ObjectModel;
 
+//SQL methods
 namespace AzureWebService.DBAccess
 {
     public class DBAccess
     {
+        //Connects the Database to the Webservice
         public const string connectionString = @"Server=tcp:the-imaginary-company.database.windows.net,1433;Initial Catalog=Inventory;Persist Security Info=False;User ID=ticAdmin;Password=ticPassword1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
+
+        //We define C# methods to manipulate the SQL based Database with queries
+        //ObservableCollection is a list that holds the objects of a class (it allows for manipulation of data)
         public ObservableCollection<Article> GetAllArticles()
         {
             string query = "select * from articles";
